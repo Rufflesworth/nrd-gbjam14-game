@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bxvc3kqbq36xy"]
+
+[ext_resource type="Script" uid="uid://c56y3x6e5dtwa" path="res://splash_screen_stuff/scripts/godot_splash_screen.gd" id="1_0hcp2"]
+[ext_resource type="PackedScene" uid="uid://dyld40m24ks68" path="res://splash_screen_stuff/scenes/rnd_splash_screen.tscn" id="2_pduma"]
+[ext_resource type="Texture2D" uid="uid://f87xds6x1712" path="res://splash_screen_stuff/sprites/godot_splash_screen_sprite.png" id="3_o3eef"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1vivr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_o3eef")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="godot_splash_screen" type="Node2D" unique_id=364044598]
+script = ExtResource("1_0hcp2")
+next_scene = ExtResource("2_pduma")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=174573088]
+position = Vector2(80, 72)
+sprite_frames = SubResource("SpriteFrames_1vivr")

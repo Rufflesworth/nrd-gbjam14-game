@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dyld40m24ks68"]
+
+[ext_resource type="Script" uid="uid://dwqcwa4lxvx6h" path="res://splash_screen_stuff/scripts/team_splash_screen.gd" id="1_ax6x2"]
+[ext_resource type="FontFile" uid="uid://cevikea01067y" path="res://fonts/4by5PixelFont.png" id="1_n3ifp"]
+[ext_resource type="PackedScene" uid="uid://jpafxypv713j" path="res://start_screen_stuff/scenes/start_screen.tscn" id="2_rxql7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1vivr"]
+font = ExtResource("1_n3ifp")
+font_size = 8
+
+[node name="team_splash_screen" type="Node2D" unique_id=1091507458]
+script = ExtResource("1_ax6x2")
+next_scene = ExtResource("2_rxql7")
+
+[node name="Label" type="Label" parent="." unique_id=523569133]
+offset_right = 160.0
+offset_bottom = 144.0
+text = "TEAM
+SPLASH SCREEN"
+label_settings = SubResource("LabelSettings_1vivr")
+horizontal_alignment = 1
+vertical_alignment = 1

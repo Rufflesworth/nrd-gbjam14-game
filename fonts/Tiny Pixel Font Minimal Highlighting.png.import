@@ -1,0 +1,25 @@
+[remap]
+
+importer="font_data_image"
+type="FontFile"
+uid="uid://b2ghpu20fpe6p"
+path="res://.godot/imported/Tiny Pixel Font Minimal Highlighting.png-19c0e36539d31e64a9db505eede0b958.fontdata"
+
+[deps]
+
+source_file="res://fonts/Tiny Pixel Font Minimal Highlighting.png"
+dest_files=["res://.godot/imported/Tiny Pixel Font Minimal Highlighting.png-19c0e36539d31e64a9db505eede0b958.fontdata"]
+
+[params]
+
+character_ranges=PackedStringArray("32-32 -1 0 0", "33-33 -2 0 0", "34-38", "39-39 -2 0 0", "40-43", "44-44 -1 0 0", "45-45", "46-46 -2 0 0", "47-104", "105-105 -2 0 0", "106-106 -1 0 0", "107-107 0 0 0", "108-108 -1 0 0", "109-114", "115-115 -1 0 0", "116-127")
+kerning_pairs=PackedStringArray()
+columns=95
+rows=1
+image_margin=Rect2i(0, 0, 0, 0)
+character_margin=Rect2i(0, 0, 0, 0)
+ascent=0
+descent=0
+fallbacks=[]
+compress=true
+scaling_mode=1

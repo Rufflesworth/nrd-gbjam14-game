@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://dixsefw4n1pjy"]
+
+[ext_resource type="Script" uid="uid://c5e3338amft4i" path="res://game_stuff/scripts/dialogue_box.gd" id="1_c0uc0"]
+[ext_resource type="FontFile" uid="uid://cevikea01067y" path="res://fonts/4by5PixelFont.png" id="2_2syps"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1vivr"]
+font = ExtResource("2_2syps")
+font_size = 4
+
+[node name="dialogue_box" type="Node2D" unique_id=1257391321]
+script = ExtResource("1_c0uc0")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=877047137]
+offset_right = 80.0
+offset_bottom = 24.0
+color = Color(0.3321148, 0.1883271, 0, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=731452495]
+
+[node name="dialogue" type="Label" parent="." unique_id=1175873813]
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 78.0
+offset_bottom = 23.0
+text = "ASDFASDFASDF"
+label_settings = SubResource("LabelSettings_1vivr")
+horizontal_alignment = 1
+vertical_alignment = 1
