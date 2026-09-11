@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://k3nj6a7uhgme"]
+
+[ext_resource type="Script" uid="uid://cjrfx66a3oirp" path="res://game_stuff/scripts/static_breakable_object.gd" id="1_5lvdd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1vivr"]
+size = Vector2(12, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8vrlf"]
+size = Vector2(12, 12)
+
+[node name="static_breakable_object" type="StaticBody2D" unique_id=544988342]
+script = ExtResource("1_5lvdd")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=347587095]
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 6.0
+offset_bottom = 6.0
+color = Color(0.631783, 0.37799725, 0.1064895, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=765425426]
+shape = SubResource("RectangleShape2D_1vivr")
+disabled = true
+
+[node name="break_box" type="Area2D" parent="." unique_id=734404827 groups=["break_boxes"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="break_box" unique_id=678655105]
+shape = SubResource("RectangleShape2D_8vrlf")

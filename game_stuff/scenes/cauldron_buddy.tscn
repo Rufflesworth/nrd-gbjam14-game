@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://c0lagnt0qkn1s"]
+
+[ext_resource type="Script" uid="uid://d30265r7nr7u2" path="res://game_stuff/scripts/cauldron_buddy.gd" id="1_5v645"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1vivr"]
+size = Vector2(320, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8vrlf"]
+size = Vector2(32, 16)
+
+[node name="cauldron_buddy" type="CharacterBody2D" unique_id=1198305574]
+script = ExtResource("1_5v645")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=161852049]
+offset_left = -12.0
+offset_top = -8.0
+offset_right = 12.0
+offset_bottom = 8.0
+color = Color(0.38003734, 0.00031106904, 0.44778877, 1)
+
+[node name="ingredient_detector" type="Area2D" parent="." unique_id=699321911]
+visible = false
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ingredient_detector" unique_id=691786895]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_1vivr")
+
+[node name="ingredient_picker" type="Area2D" parent="." unique_id=1002232170]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ingredient_picker" unique_id=1443277652]
+shape = SubResource("RectangleShape2D_8vrlf")
+
+[connection signal="body_entered" from="ingredient_detector" to="." method="_on_ingredient_detector_body_entered"]
+[connection signal="body_entered" from="ingredient_picker" to="." method="_on_ingredient_picker_body_entered"]

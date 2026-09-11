@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://s7asbgnkqmg8"]
+
+[ext_resource type="Script" uid="uid://drajsl53jw6g7" path="res://game_stuff/scripts/ingredient.gd" id="1_1q5wd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1vivr"]
+size = Vector2(8, 8)
+
+[node name="ingredient" type="CharacterBody2D" unique_id=966899798 groups=["ingredients"]]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_1q5wd")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1828275874]
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+color = Color(1, 0.5301807, 0.6111771, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=489355463]
+shape = SubResource("RectangleShape2D_1vivr")

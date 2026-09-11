@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://crf35sc77nky7"]
+
+[ext_resource type="Script" uid="uid://b4eiaolehj83t" path="res://game_stuff/scripts/player_character.gd" id="1_xmpqk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1vivr"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8vrlf"]
+size = Vector2(8, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v5gy4"]
+size = Vector2(16, 8)
+
+[node name="player_character" type="CharacterBody2D" unique_id=1411782389]
+script = ExtResource("1_xmpqk")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1647926137]
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+color = Color(0.67481464, 0.67481464, 0.6748146, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1292040851]
+shape = SubResource("RectangleShape2D_1vivr")
+
+[node name="hammer_box" type="Area2D" parent="." unique_id=961668634]
+position = Vector2(12, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hammer_box" unique_id=584175681]
+shape = SubResource("RectangleShape2D_8vrlf")
+disabled = true
+
+[node name="kick_box" type="Area2D" parent="." unique_id=123777486]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="kick_box" unique_id=974359807]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_v5gy4")
+disabled = true
+
+[connection signal="area_entered" from="hammer_box" to="." method="_on_hammer_box_area_entered"]
+[connection signal="body_entered" from="kick_box" to="." method="_on_kick_box_body_entered"]

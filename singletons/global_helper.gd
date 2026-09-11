@@ -2,11 +2,11 @@ extends Node
 
 #var title_screen_resource: PackedScene = preload("res://title_and_splash_screens/scenes/title_screen.tscn")
 
-#func get_game() -> Node:
-	#var game: Node
-	#var tree = get_parent()
-	#game = tree.get_node("Game")
-	#return game
+func get_game() -> Node:
+	var game: Node
+	var tree = get_parent()
+	game = tree.get_node("game")
+	return game
 
 #func go_to_title_screen():
 	#change_scene(title_screen_resource)
