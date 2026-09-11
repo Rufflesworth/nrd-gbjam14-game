@@ -3,16 +3,68 @@
 [ext_resource type="Script" uid="uid://dwqcwa4lxvx6h" path="res://splash_screen_stuff/scripts/team_splash_screen.gd" id="1_ax6x2"]
 [ext_resource type="FontFile" uid="uid://cevikea01067y" path="res://fonts/4by5PixelFont.png" id="1_n3ifp"]
 [ext_resource type="PackedScene" uid="uid://jpafxypv713j" path="res://start_screen_stuff/scenes/start_screen.tscn" id="2_rxql7"]
+[ext_resource type="Texture2D" uid="uid://b3l4wr8a25skq" path="res://splash_screen_stuff/sprites/AllFunAndGames_wip_spritesheet.png" id="4_q0lgm"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1vivr"]
 font = ExtResource("1_n3ifp")
 font_size = 8
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ewj5h"]
+atlas = ExtResource("4_q0lgm")
+region = Rect2(0, 0, 160, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mlxy7"]
+atlas = ExtResource("4_q0lgm")
+region = Rect2(160, 0, 160, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aoxg7"]
+atlas = ExtResource("4_q0lgm")
+region = Rect2(320, 0, 160, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2f58o"]
+atlas = ExtResource("4_q0lgm")
+region = Rect2(0, 144, 160, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1kl3m"]
+atlas = ExtResource("4_q0lgm")
+region = Rect2(160, 144, 160, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p18c8"]
+atlas = ExtResource("4_q0lgm")
+region = Rect2(320, 144, 160, 144)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1vivr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ewj5h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mlxy7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aoxg7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2f58o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1kl3m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p18c8")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 6.0
+}]
 
 [node name="team_splash_screen" type="Node2D" unique_id=1091507458]
 script = ExtResource("1_ax6x2")
 next_scene = ExtResource("2_rxql7")
 
 [node name="Label" type="Label" parent="." unique_id=523569133]
+visible = false
 offset_right = 160.0
 offset_bottom = 144.0
 text = "TEAM
@@ -20,3 +72,8 @@ SPLASH SCREEN"
 label_settings = SubResource("LabelSettings_1vivr")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=390047374]
+position = Vector2(80, 72)
+sprite_frames = SubResource("SpriteFrames_1vivr")
+frame_progress = 0.66583383
