@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://b7hi45yrmc1fj"]
+
+[ext_resource type="Script" uid="uid://sg1gjg5ba0ax" path="res://game_stuff/scripts/cheeseable_block.gd" id="1_meq8f"]
+[ext_resource type="Texture2D" uid="uid://cd3gikjes818s" path="res://game_stuff/sprites/test_spritesheet.png" id="2_bk6vf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_60lpq"]
+atlas = ExtResource("2_bk6vf")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_urba8"]
+atlas = ExtResource("2_bk6vf")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1vivr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_60lpq")
+}],
+"loop": 1,
+"name": &"cheese",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_urba8")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1vivr"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8vrlf"]
+size = Vector2(14, 14)
+
+[node name="cheeseable_block" type="StaticBody2D" unique_id=1521402740]
+script = ExtResource("1_meq8f")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1582073031]
+sprite_frames = SubResource("SpriteFrames_1vivr")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1323210171]
+visible = false
+shape = SubResource("RectangleShape2D_1vivr")
+
+[node name="cheeseable_box" type="Area2D" parent="." unique_id=552313629 groups=["cheeseable_boxes"]]
+visible = false
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cheeseable_box" unique_id=1896545988]
+shape = SubResource("RectangleShape2D_8vrlf")

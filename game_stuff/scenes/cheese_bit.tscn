@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://cj2d1tsl27yq1"]
+
+[ext_resource type="Script" uid="uid://do2jjkhyde5u8" path="res://game_stuff/scripts/cheese_bit.gd" id="1_7sx36"]
+[ext_resource type="Texture2D" uid="uid://cwcoiq88yh3ff" path="res://game_stuff/sprites/mouse_spritesheet.png" id="2_1yifn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mkr02"]
+atlas = ExtResource("2_1yifn")
+region = Rect2(32, 8, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1vivr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mkr02")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8vrlf"]
+size = Vector2(4, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1vivr"]
+size = Vector2(4, 4)
+
+[node name="cheese_bit" type="StaticBody2D" unique_id=1264888587]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_7sx36")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1699340823]
+position = Vector2(0, -1)
+sprite_frames = SubResource("SpriteFrames_1vivr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1676287388]
+visible = false
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_8vrlf")
+
+[node name="collectable_box" type="Area2D" parent="." unique_id=1190717570 groups=["collectables"]]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collectable_box" unique_id=1844031994]
+shape = SubResource("RectangleShape2D_1vivr")

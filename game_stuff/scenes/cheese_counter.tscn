@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://6h2fjshyhuyx"]
+
+[ext_resource type="Script" uid="uid://b180hr8n8i4xp" path="res://game_stuff/scripts/cheese_counter.gd" id="1_pipa0"]
+[ext_resource type="FontFile" uid="uid://cevikea01067y" path="res://fonts/4by5PixelFont.png" id="2_heok4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1vivr"]
+font = ExtResource("2_heok4")
+
+[node name="cheese_counter" type="Control" unique_id=571966882]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pipa0")
+
+[node name="amount" type="Label" parent="." unique_id=1444193847]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 14.0
+text = "0"
+label_settings = SubResource("LabelSettings_1vivr")

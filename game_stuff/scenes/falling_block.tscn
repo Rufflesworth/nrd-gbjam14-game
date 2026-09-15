@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bsuy8g7qa1qmm"]
+
+[ext_resource type="Script" uid="uid://dlnkpogmtm27w" path="res://game_stuff/scripts/falling_block.gd" id="1_8ni2h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1vivr"]
+size = Vector2(4, 8)
+
+[node name="falling_block" type="AnimatableBody2D" unique_id=1506120747]
+collision_layer = 7
+collision_mask = 7
+sync_to_physics = false
+script = ExtResource("1_8ni2h")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1556450121]
+offset_left = -2.0
+offset_top = -4.0
+offset_right = 2.0
+offset_bottom = 4.0
+color = Color(0.73462635, 0.09255915, 1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=72978131]
+visible = false
+shape = SubResource("RectangleShape2D_1vivr")

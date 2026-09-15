@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://b2f25vrdk1r5j"]
+
+[ext_resource type="Script" uid="uid://cqyvkofvniknq" path="res://game_stuff/scripts/room_exit.gd" id="1_nxceq"]
+
+[node name="room_exit" type="Area2D" unique_id=1074077257]
+script = ExtResource("1_nxceq")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -2,6 +2,9 @@ extends Node
 
 #var title_screen_resource: PackedScene = preload("res://title_and_splash_screens/scenes/title_screen.tscn")
 
+func _ready() -> void:
+	randomize()
+
 func get_game() -> Node:
 	var game: Node
 	var tree = get_parent()

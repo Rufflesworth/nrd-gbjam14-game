@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://jpafxypv713j"]
+
+[ext_resource type="Script" uid="uid://c48gkyxui5q1t" path="res://start_screen_stuff/scripts/start_screen.gd" id="1_8jklf"]
+[ext_resource type="FontFile" uid="uid://cevikea01067y" path="res://fonts/4by5PixelFont.png" id="1_l8wii"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1vivr"]
+font = ExtResource("1_l8wii")
+
+[node name="start_screen" type="Node2D" unique_id=1608211177]
+script = ExtResource("1_8jklf")
+
+[node name="Label" type="Label" parent="." unique_id=1912291379]
+offset_right = 160.0
+offset_bottom = 144.0
+text = "Start Screen"
+label_settings = SubResource("LabelSettings_1vivr")
+horizontal_alignment = 1
+vertical_alignment = 1

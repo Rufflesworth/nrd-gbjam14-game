@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpr6vcpm74e1w"
-path="res://.godot/imported/level_doodle.png-75bb5dbdf1e05a68ece6768d08c7ac4f.ctex"
+uid="uid://3wgm6jqwk4vl"
+path="res://.godot/imported/spaceship_tileset.png-d878a7a155ae7e8eaaa68f308449b388.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game_stuff/sprites/level_doodle.png"
-dest_files=["res://.godot/imported/level_doodle.png-75bb5dbdf1e05a68ece6768d08c7ac4f.ctex"]
+source_file="res://game_stuff/sprites/spaceship_tileset.png"
+dest_files=["res://.godot/imported/spaceship_tileset.png-d878a7a155ae7e8eaaa68f308449b388.ctex"]
 
 [params]
 
