@@ -23,7 +23,7 @@ buses/default_bus_layout="uid://c1timfrdhhf5f"
 [autoload]
 
 GlobalHelper="*uid://doyrv0mlqxvxe"
-AudioController="*uid://cobbtr0k8dj78"
+AudioController="*uid://bxivikgp2few2"
 
 [display]
 

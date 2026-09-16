@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://cmlx5j0vge08n"]
+
+[ext_resource type="Script" uid="uid://pvhkxmihca6n" path="res://game_stuff/scripts/player_character_life.gd" id="1_hbjv3"]
+[ext_resource type="FontFile" uid="uid://cevikea01067y" path="res://fonts/4by5PixelFont.png" id="1_hfu8b"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1vivr"]
+font = ExtResource("1_hfu8b")
+
+[node name="player_character_life" type="Control" unique_id=1782183298]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hbjv3")
+
+[node name="hp" type="Label" parent="." unique_id=81652750]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+text = "2"
+label_settings = SubResource("LabelSettings_1vivr")
+horizontal_alignment = 1
+vertical_alignment = 1

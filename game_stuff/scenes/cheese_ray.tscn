@@ -1,30 +1,128 @@
 [gd_scene format=3 uid="uid://7nir77qudp5e"]
 
 [ext_resource type="Script" uid="uid://bc3ixl6n6o15a" path="res://game_stuff/scripts/cheese_ray.gd" id="1_683my"]
+[ext_resource type="Texture2D" uid="uid://4q1w0niqyxyr" path="res://game_stuff/sprites/cheese_ray_spritesheet.png" id="2_0c6vl"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8vrlf"]
-size = Vector2(4, 2)
+[sub_resource type="AtlasTexture" id="AtlasTexture_0c6vl"]
+atlas = ExtResource("2_0c6vl")
+region = Rect2(0, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1wtel"]
+atlas = ExtResource("2_0c6vl")
+region = Rect2(8, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y74q8"]
+atlas = ExtResource("2_0c6vl")
+region = Rect2(16, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ay34b"]
+atlas = ExtResource("2_0c6vl")
+region = Rect2(24, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qqt03"]
+atlas = ExtResource("2_0c6vl")
+region = Rect2(0, 16, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ixt2"]
+atlas = ExtResource("2_0c6vl")
+region = Rect2(8, 16, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hs6i5"]
+atlas = ExtResource("2_0c6vl")
+region = Rect2(16, 16, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ppiwu"]
+atlas = ExtResource("2_0c6vl")
+region = Rect2(0, 24, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v1e4f"]
+atlas = ExtResource("2_0c6vl")
+region = Rect2(8, 24, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ai0v4"]
+atlas = ExtResource("2_0c6vl")
+region = Rect2(16, 24, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r31d8"]
+atlas = ExtResource("2_0c6vl")
+region = Rect2(24, 24, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2cih1"]
+atlas = ExtResource("2_0c6vl")
+region = Rect2(0, 32, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2wojc"]
+atlas = ExtResource("2_0c6vl")
+region = Rect2(8, 32, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbjeg"]
+atlas = ExtResource("2_0c6vl")
+region = Rect2(16, 32, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1vivr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0c6vl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1wtel")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y74q8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ay34b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qqt03")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ixt2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hs6i5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ppiwu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v1e4f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ai0v4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r31d8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2cih1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2wojc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tbjeg")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 12.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1vivr"]
-size = Vector2(6, 2)
+size = Vector2(2, 2)
 
 [node name="cheese_ray" type="CharacterBody2D" unique_id=1817815598]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_683my")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=378375511]
-offset_left = -3.0
-offset_top = -1.0
-offset_right = 3.0
-offset_bottom = 1.0
-color = Color(0.97851056, 0.81193256, 2.3102762e-06, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=375613744]
-shape = SubResource("RectangleShape2D_8vrlf")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1970618766]
+sprite_frames = SubResource("SpriteFrames_1vivr")
+autoplay = "default"
+frame_progress = 0.65469545
 
 [node name="hit_box" type="Area2D" parent="." unique_id=907798490]
-visible = false
 collision_layer = 2
 collision_mask = 2
 
@@ -32,3 +130,4 @@ collision_mask = 2
 shape = SubResource("RectangleShape2D_1vivr")
 
 [connection signal="area_entered" from="hit_box" to="." method="_on_hit_box_area_entered"]
+[connection signal="body_entered" from="hit_box" to="." method="_on_hit_box_body_entered"]

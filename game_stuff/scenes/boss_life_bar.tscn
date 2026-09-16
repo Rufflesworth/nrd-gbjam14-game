@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://t26psbjy3g35"]
+
+[ext_resource type="Texture2D" uid="uid://cjtcmvklmdy2p" path="res://assets/sprites/boss_life_bar_01.png" id="1_m1sj0"]
+[ext_resource type="Texture2D" uid="uid://pwee4v0x35dd" path="res://assets/sprites/boss_life_bar_02.png" id="2_ke2pe"]
+[ext_resource type="Script" uid="uid://dyqcqkoukn54a" path="res://game_stuff/scripts/boss_life_bar.gd" id="3_ke2pe"]
+
+[node name="boss_life_bar" type="TextureProgressBar" unique_id=876981977]
+offset_right = 80.0
+offset_bottom = 16.0
+value = 37.0
+rounded = true
+texture_under = ExtResource("1_m1sj0")
+texture_progress = ExtResource("2_ke2pe")
+script = ExtResource("3_ke2pe")

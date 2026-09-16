@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://baf8xxr0yuktp"]
+
+[ext_resource type="Script" uid="uid://7n6gq8cvt7cr" path="res://game_stuff/scripts/boss.gd" id="1_r1x7c"]
+[ext_resource type="Texture2D" uid="uid://bpx5oaq5o60g8" path="res://assets/sprites/boss_spritesheet.png" id="2_a0a1g"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ajp5e"]
+atlas = ExtResource("2_a0a1g")
+region = Rect2(0, 32, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1vivr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ajp5e")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a0a1g"]
+size = Vector2(24, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b4ysa"]
+size = Vector2(32, 32)
+
+[node name="boss" type="CharacterBody2D" unique_id=1181347385]
+script = ExtResource("1_r1x7c")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1750429806]
+sprite_frames = SubResource("SpriteFrames_1vivr")
+
+[node name="hurt_box" type="Area2D" parent="." unique_id=869511121 groups=["hurt_boxes"]]
+visible = false
+collision_layer = 10
+collision_mask = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurt_box" unique_id=675319013]
+shape = SubResource("RectangleShape2D_a0a1g")
+
+[node name="hit_box" type="Area2D" parent="." unique_id=257574106]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hit_box" unique_id=474710524]
+shape = SubResource("RectangleShape2D_b4ysa")
+
+[connection signal="area_entered" from="hit_box" to="." method="_on_hit_box_area_entered"]

@@ -12,11 +12,11 @@ func _ready() -> void:
 	camera = GlobalHelper.get_game().get_room().get_camera()
 
 func _physics_process(delta: float) -> void:
-	var screen_center: Vector2 = camera.get_screen_center_position()
-	if absf(global_position.x - screen_center.x) > 88.0: despawn()
+	if camera:
+		var screen_center: Vector2 = camera.get_screen_center_position()
+		if absf(global_position.x - screen_center.x) > 88.0: despawn()
 	
-	var col = move_and_collide(velocity * delta)
-	if col: impact()
+	move_and_collide(velocity * delta)
 
 func impact():
 	despawn()
@@ -26,8 +26,8 @@ func despawn():
 	emit_signal("freeing")
 
 func _on_hit_box_area_entered(area: Area2D) -> void:
+	#prints("cheese ray entered area:", area)
 	if area.is_in_group("cheeseable_boxes"):
-		prints("16by16 cheese ray hit")
 		var chzd_obj = area.get_parent()
 		chzd_obj._handle_hit_by_cheese_ray()
 		impact()
@@ -35,3 +35,7 @@ func _on_hit_box_area_entered(area: Area2D) -> void:
 		var enemy = area.get_parent()
 		enemy.take_damage()
 		impact()
+
+func _on_hit_box_body_entered(body: Node2D) -> void:
+	#prints("cheese ray entered body:", body)
+	impact()

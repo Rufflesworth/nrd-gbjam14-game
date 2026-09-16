@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bxivikgp2few2"]
+
+[ext_resource type="Script" uid="uid://cobbtr0k8dj78" path="res://singletons/audio_controller.gd" id="1_2rq82"]
+
+[node name="audio_controller" type="Node" unique_id=822225685]
+script = ExtResource("1_2rq82")
+
+[node name="background_music" type="AudioStreamPlayer" parent="." unique_id=1531030725]
+volume_db = -3.0
+
+[node name="cheese_audio" type="AudioStreamPlayer" parent="." unique_id=1182651973]

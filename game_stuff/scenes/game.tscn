@@ -1,15 +1,33 @@
 [gd_scene format=3 uid="uid://bnb2moo71mwqq"]
 
 [ext_resource type="Script" uid="uid://dqpg3fp011o1o" path="res://game_stuff/scripts/game.gd" id="1_771w1"]
-[ext_resource type="PackedScene" uid="uid://dqxcwxamrmgfq" path="res://game_stuff/scenes/test_room1.tscn" id="2_wc8md"]
+[ext_resource type="PackedScene" uid="uid://cd216w57cmke5" path="res://game_stuff/scenes/test_boss_room.tscn" id="2_ih8vm"]
+[ext_resource type="AudioStream" uid="uid://besnfkrh41mo3" path="res://assets/audio/music/Stage1.wav" id="3_3uf8i"]
 [ext_resource type="PackedScene" uid="uid://6h2fjshyhuyx" path="res://game_stuff/scenes/cheese_counter.tscn" id="3_lteo3"]
+[ext_resource type="PackedScene" uid="uid://t26psbjy3g35" path="res://game_stuff/scenes/boss_life_bar.tscn" id="5_l2ul3"]
+[ext_resource type="PackedScene" uid="uid://cmlx5j0vge08n" path="res://game_stuff/scenes/player_character_life.tscn" id="6_xrpyh"]
 
 [node name="game" type="Node2D" unique_id=2025475812]
 script = ExtResource("1_771w1")
-first_room = ExtResource("2_wc8md")
+first_room = ExtResource("2_ih8vm")
+stage_music = ExtResource("3_3uf8i")
 
 [node name="room" type="Node2D" parent="." unique_id=14516140]
 
 [node name="user_interface" type="CanvasLayer" parent="." unique_id=1338849887]
 
 [node name="cheese_counter" parent="user_interface" unique_id=571966882 instance=ExtResource("3_lteo3")]
+offset_top = 128.0
+
+[node name="boss_life_bar" parent="user_interface" unique_id=876981977 instance=ExtResource("5_l2ul3")]
+offset_left = 80.0
+offset_top = 128.0
+offset_right = 160.0
+offset_bottom = 144.0
+max_value = 80.0
+value = 80.0
+
+[node name="player_character_life" parent="user_interface" unique_id=1782183298 instance=ExtResource("6_xrpyh")]
+offset_left = 24.0
+offset_top = 128.0
+offset_right = -120.0

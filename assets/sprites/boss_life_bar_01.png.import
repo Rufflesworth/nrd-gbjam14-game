@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://knyqq1borgwi"
-path="res://.godot/imported/my_mouse_attemps.png-2e374f9f2b3ea6173ae96d9f46dbfcaf.ctex"
+uid="uid://cjtcmvklmdy2p"
+path="res://.godot/imported/boss_life_bar_01.png-c161aebe609e73696010d1a30ef7c35f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game_stuff/sprites/my_mouse_attemps.png"
-dest_files=["res://.godot/imported/my_mouse_attemps.png-2e374f9f2b3ea6173ae96d9f46dbfcaf.ctex"]
+source_file="res://assets/sprites/boss_life_bar_01.png"
+dest_files=["res://.godot/imported/boss_life_bar_01.png-c161aebe609e73696010d1a30ef7c35f.ctex"]
 
 [params]
 

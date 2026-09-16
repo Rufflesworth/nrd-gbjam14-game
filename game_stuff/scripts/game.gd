@@ -2,13 +2,17 @@ extends Node2D
 
 signal retrying_current_room
 signal new_room_loaded
+signal boss_room_loaded
 
 @export var first_room: PackedScene
+@export var stage_music: AudioStreamWAV
 
+var boss_music: AudioStreamWAV = preload("res://assets/audio/music/Boss Theme.wav")
 var current_room: Node2D
 var current_room_resource: PackedScene
 
 func _ready() -> void:
+	load_stage()
 	load_new_room(first_room)
 
 func _process(_delta: float) -> void:
@@ -22,6 +26,9 @@ func get_room() -> Node2D:
 
 func get_camera(): return $camera
 
+func load_stage():
+	AudioController.set_music_track(stage_music)
+
 func retry_current_room():
 	load_new_room(current_room_resource)
 	emit_signal("retrying_current_room")
@@ -31,8 +38,12 @@ func load_new_room(room: PackedScene):
 
 func deferred_load_new_room(room: PackedScene):
 	var new_room = room.instantiate()
-	#$room.get_child(0).free()
 	if current_room: current_room.free()
+	
+	if new_room.room_type == 1: # boss room!
+		AudioController.set_music_track(boss_music)
+		call_deferred("emit_signal", "boss_room_loaded")
+	
 	$room.add_child(new_room)
 	current_room_resource = room
 	current_room = new_room

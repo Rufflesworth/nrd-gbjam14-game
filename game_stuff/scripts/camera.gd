@@ -3,7 +3,7 @@ extends Camera2D
 @export var player_character: Node2D
 
 const SPEED = 96.0
-const PLAYER_LEAD = 16.0
+const PLAYER_LEAD = 0.0
 
 enum STATES { ACTIVE, PAUSED }
 var state: STATES = STATES.ACTIVE

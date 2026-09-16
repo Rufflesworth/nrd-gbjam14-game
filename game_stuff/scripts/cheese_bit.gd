@@ -11,6 +11,8 @@ func _ready() -> void:
 	if randi() % 2 == 0:
 		x_vel *= -1
 	velocity = Vector2(x_vel, -1 * randi() % 16 - 32)
+	
+	$AnimatedSprite2D.frame = randi() % 3
 
 func _physics_process(delta: float) -> void:
 	velocity.y += GRAVITY * delta
