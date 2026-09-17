@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cct6kl4jv4i8v" path="res://game_stuff/scripts/camera.gd" id="1_b0chb"]
 
 [node name="camera" type="Camera2D" unique_id=2026864448]
+process_callback = 0
 limit_left = 0
 limit_bottom = 144
 script = ExtResource("1_b0chb")

@@ -109,6 +109,9 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8vrlf"]
+size = Vector2(2, 2)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1vivr"]
 size = Vector2(2, 2)
 
@@ -121,6 +124,10 @@ script = ExtResource("1_683my")
 sprite_frames = SubResource("SpriteFrames_1vivr")
 autoplay = "default"
 frame_progress = 0.65469545
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=960635485]
+shape = SubResource("RectangleShape2D_8vrlf")
+disabled = true
 
 [node name="hit_box" type="Area2D" parent="." unique_id=907798490]
 collision_layer = 2

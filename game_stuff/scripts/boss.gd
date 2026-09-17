@@ -26,11 +26,12 @@ func _physics_process(delta: float) -> void:
 				phase = PHASES.LAUGH
 
 func take_damage():
-	prints(self, "doesn't implement take_damage()!")
 	health -= 3
 	if health <= 0:
 		prints("BOSS DEFEATED!!! GG!!!")
 		$hurt_box/CollisionShape2D.set_deferred("disabled", true)
+	else:
+		$take_damage_audio.play()
 	emit_signal("health_changed")
 
 func _on_hit_box_area_entered(area: Area2D) -> void:

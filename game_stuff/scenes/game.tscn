@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bnb2moo71mwqq"]
 
 [ext_resource type="Script" uid="uid://dqpg3fp011o1o" path="res://game_stuff/scripts/game.gd" id="1_771w1"]
-[ext_resource type="PackedScene" uid="uid://cd216w57cmke5" path="res://game_stuff/scenes/test_boss_room.tscn" id="2_ih8vm"]
+[ext_resource type="PackedScene" uid="uid://y1ffoao5u7t4" path="res://game_stuff/rooms/upper_test_room.tscn" id="2_xrpyh"]
 [ext_resource type="AudioStream" uid="uid://besnfkrh41mo3" path="res://assets/audio/music/Stage1.wav" id="3_3uf8i"]
 [ext_resource type="PackedScene" uid="uid://6h2fjshyhuyx" path="res://game_stuff/scenes/cheese_counter.tscn" id="3_lteo3"]
 [ext_resource type="PackedScene" uid="uid://t26psbjy3g35" path="res://game_stuff/scenes/boss_life_bar.tscn" id="5_l2ul3"]
@@ -9,7 +9,7 @@
 
 [node name="game" type="Node2D" unique_id=2025475812]
 script = ExtResource("1_771w1")
-first_room = ExtResource("2_ih8vm")
+first_room = ExtResource("2_xrpyh")
 stage_music = ExtResource("3_3uf8i")
 
 [node name="room" type="Node2D" parent="." unique_id=14516140]

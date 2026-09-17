@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://c65mfl53ojnvq"]
+
+[ext_resource type="Script" uid="uid://dl1707v8supy0" path="res://game_stuff/scripts/simple_up_down.gd" id="1_5nqua"]
+[ext_resource type="Texture2D" uid="uid://dlissq7prdke7" path="res://game_stuff/sprites/spider.png" id="1_bufnp"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1vivr"]
+animations = [{
+"frames": [],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"take_damage",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8vrlf"]
+size = Vector2(10, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1vivr"]
+size = Vector2(8, 8)
+
+[node name="simple_up_down" type="StaticBody2D" unique_id=1752127183]
+script = ExtResource("1_5nqua")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=430038669]
+sprite_frames = SubResource("SpriteFrames_1vivr")
+animation = &"take_damage"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1436315553]
+texture = ExtResource("1_bufnp")
+
+[node name="hurt_box" type="Area2D" parent="." unique_id=430936994 groups=["hurt_boxes"]]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurt_box" unique_id=2053517058]
+shape = SubResource("RectangleShape2D_8vrlf")
+
+[node name="hit_box" type="Area2D" parent="." unique_id=309782328]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hit_box" unique_id=303100099]
+shape = SubResource("RectangleShape2D_1vivr")
+
+[connection signal="area_entered" from="hit_box" to="." method="_on_hit_box_area_entered"]

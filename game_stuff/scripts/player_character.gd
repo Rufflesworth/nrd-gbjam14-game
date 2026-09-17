@@ -18,7 +18,6 @@ const ACCELERATION = 384.0
 const MAX_SPEED = 48.0
 const FRICTION = 24.0
 const JUMP_FORCE = -160.0
-const GRAVITY = 384.0
 const FALL_MULTIPLIER = 2.0
 const TERMINAL_VELOCITY = 128.0
 const SHOOT_TIMER = 0.10
@@ -34,8 +33,10 @@ var state: STATES
 
 var jump_sfx: AudioStreamWAV = preload("res://assets/audio/sfx/Jump.wav")
 var land_sfx: AudioStreamWAV = preload("res://assets/audio/sfx/Land.wav")
+var die_sfx: AudioStreamWAV = preload("res://assets/audio/sfx/Die.wav")
 
 var cheese_ray_resource: PackedScene = preload("res://game_stuff/scenes/cheese_ray.tscn")
+var float_pos: Vector2
 var facing: float = 1.0 # right = 1.0, left = -1.0
 var movement_direction: float = 0.0 # right = 1.0, left = -1.0
 var shoot_count: float = 0.0
@@ -45,9 +46,11 @@ var was_on_floor_last_frame: bool
 var jump_buffer_count: float = 0.0
 var coyote_count: float = 0.0
 var is_external_bounce: bool = false
+var external_velocity: Vector2
 var health: int = 1
 
 func _ready() -> void:
+	float_pos = global_position
 	if is_boss_room:
 		health = 3
 
@@ -63,6 +66,8 @@ func _physics_process(delta: float) -> void:
 			process_jump(delta)
 			process_cheese_ray(delta)
 			process_animation()
+		STATES.DYING:
+			process_movement(delta)
 
 func process_movement(delta: float):
 	movement_direction = roundf(Input.get_axis("player_left", "player_right"))
@@ -74,18 +79,24 @@ func process_movement(delta: float):
 		velocity.x += movement_direction * ACCELERATION * delta
 		if absf(velocity.x) > MAX_SPEED: velocity.x = movement_direction * MAX_SPEED
 	else: # no input from the player
-		#velocity.x = 0.0
-		velocity.x = lerpf(velocity.x, 0.0, FRICTION * delta)
+		velocity.x = 0.0
+		#velocity.x = lerpf(velocity.x, 0.0, FRICTION * delta)
+		velocity += external_velocity
 	
 	if not is_on_floor():
 		if velocity.y < 0.0: # moving upward
-			velocity.y += GRAVITY * delta
+			velocity += get_gravity() * delta
 		elif velocity.y >= 0.0: # falling
-			velocity.y += GRAVITY * FALL_MULTIPLIER * delta
+			velocity += get_gravity() * FALL_MULTIPLIER * delta
 		
 		if velocity.y > TERMINAL_VELOCITY: velocity.y = TERMINAL_VELOCITY
 	
+	global_position = float_pos
 	move_and_slide()
+	float_pos = global_position
+	global_position = float_pos.round()
+	#prints(self.name, "global_position:", global_position)
+	#prints(self.name, "float_position:", float_pos)
 
 func process_jump(delta: float):
 	var can_jump: bool = false
@@ -109,6 +120,7 @@ func process_jump(delta: float):
 		# falling through a one-way platform
 		if Input.is_action_pressed("player_down") and global_position.y < 96.0:
 			global_position.y += 1.0
+			float_pos.y += 1.0
 		elif can_jump:
 			prints("regular from ground jump")
 			jump()
@@ -179,11 +191,18 @@ func apply_external_force(vec: Vector2):
 	velocity = vec
 	is_external_bounce = true
 
+func add_external_velocity(vel: Vector2):
+	external_velocity = vel
+
+func remove_external_velocity(): external_velocity = Vector2.ZERO
+
 func take_damage():
 	health -= 1
 	if health <= 0:
 		$hurt_box/CollisionShape2D.set_deferred("disabled", true)
 		$AnimatedSprite2D.play("die")
+		$take_damage_audio.stream = die_sfx
+		$take_damage_audio.play()
 		state = STATES.DYING
 	else:
 		pass

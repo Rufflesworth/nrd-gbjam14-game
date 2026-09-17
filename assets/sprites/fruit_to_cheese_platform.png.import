@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cm3i2v8qp78mk"
-path="res://.godot/imported/hanging_flower_animation.png-3b888cda5e7d619909dd8473563ae2f2.ctex"
+uid="uid://p1nql65hf6f1"
+path="res://.godot/imported/fruit_to_cheese_platform.png-b40bb3ab29645ee0ba96da64835ab530.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game_stuff/sprites/hanging_flower_animation.png"
-dest_files=["res://.godot/imported/hanging_flower_animation.png-3b888cda5e7d619909dd8473563ae2f2.ctex"]
+source_file="res://assets/sprites/fruit_to_cheese_platform.png"
+dest_files=["res://.godot/imported/fruit_to_cheese_platform.png-b40bb3ab29645ee0ba96da64835ab530.ctex"]
 
 [params]
 

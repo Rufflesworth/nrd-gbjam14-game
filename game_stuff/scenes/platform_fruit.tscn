@@ -1,0 +1,119 @@
+[gd_scene format=3 uid="uid://duirmc7p2wdu0"]
+
+[ext_resource type="Script" uid="uid://crhotpfnxjgmo" path="res://game_stuff/scripts/platform_fruit.gd" id="1_uvbno"]
+[ext_resource type="Texture2D" uid="uid://bgcbjjwl4da2u" path="res://assets/sprites/hanging_platform_spritesheet.png" id="2_fq51f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iu5dd"]
+atlas = ExtResource("2_fq51f")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vigsy"]
+atlas = ExtResource("2_fq51f")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ym7ji"]
+atlas = ExtResource("2_fq51f")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ddgdx"]
+atlas = ExtResource("2_fq51f")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6bwt4"]
+atlas = ExtResource("2_fq51f")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fq51f"]
+atlas = ExtResource("2_fq51f")
+region = Rect2(0, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g3dum"]
+atlas = ExtResource("2_fq51f")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d41a1"]
+atlas = ExtResource("2_fq51f")
+region = Rect2(0, 48, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nfay2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iu5dd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vigsy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ym7ji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ddgdx")
+}],
+"loop": 0,
+"name": &"bloom",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6bwt4")
+}],
+"loop": 0,
+"name": &"bud",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fq51f")
+}],
+"loop": 1,
+"name": &"cheese",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g3dum")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d41a1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g3dum")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d41a1")
+}],
+"loop": 0,
+"name": &"take_hit",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1vivr"]
+size = Vector2(46, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8vrlf"]
+size = Vector2(12, 24)
+
+[node name="platform_fruit" type="StaticBody2D" unique_id=1130830861]
+script = ExtResource("1_uvbno")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=676148393]
+sprite_frames = SubResource("SpriteFrames_nfay2")
+animation = &"bud"
+autoplay = "bud"
+
+[node name="platform" type="CollisionShape2D" parent="." unique_id=812410603]
+visible = false
+shape = SubResource("RectangleShape2D_1vivr")
+disabled = true
+
+[node name="cheeseable_box" type="Area2D" parent="." unique_id=2099193716 groups=["cheeseable_boxes"]]
+visible = false
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cheeseable_box" unique_id=1848417675]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_8vrlf")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

@@ -22,8 +22,9 @@ func impact():
 	despawn()
 
 func despawn():
-	queue_free()
-	emit_signal("freeing")
+	if not is_queued_for_deletion():
+		queue_free()
+		emit_signal("freeing")
 
 func _on_hit_box_area_entered(area: Area2D) -> void:
 	#prints("cheese ray entered area:", area)

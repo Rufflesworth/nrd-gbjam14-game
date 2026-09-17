@@ -8,10 +8,15 @@
 
 config_version=5
 
+[animation]
+
+compatibility/physics_interpolation=false
+compatibility/default_gravity=384.0
+
 [application]
 
 config/name="NRD-GBJAM14-Game"
-run/main_scene="uid://jpafxypv713j"
+run/main_scene="uid://bs5134u2qgkxo"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 boot_splash/show_image=false
 config/icon="res://icon.svg"
@@ -31,15 +36,10 @@ window/size/viewport_width=160
 window/size/viewport_height=144
 window/size/window_width_override=800
 window/size/window_height_override=720
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
 
 [global_group]
 
-ingredients=""
-break_boxes="an area2d placed on objects that are breakable"
-potions=""
-explodable_boxes=""
-whackable_boxes=""
 cheeseable_boxes=""
 collectables=""
 hurt_boxes=""
@@ -138,6 +138,7 @@ player_start={
 [physics]
 
 3d/physics_engine="Jolt Physics"
+2d/default_gravity=384.0
 
 [rendering]
 
@@ -147,4 +148,3 @@ renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 anti_aliasing/screen_space_roughness_limiter/enabled=false
 2d/snap/snap_2d_transforms_to_pixel=true
-2d/snap/snap_2d_vertices_to_pixel=true

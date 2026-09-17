@@ -5,40 +5,29 @@ extends Camera2D
 const SPEED = 96.0
 const PLAYER_LEAD = 0.0
 
-enum STATES { ACTIVE, PAUSED }
-var state: STATES = STATES.ACTIVE
-
-var target: float
-var move_counter: float = 0.0
+var target: Vector2
+var float_position: Vector2
 
 func _ready() -> void:
 	if player_character == null: prints(name, "is missing a reference to the player character")
 	else: global_position = player_character.global_position
 
 func _physics_process(delta: float) -> void:
-	if state == STATES.PAUSED: return
-	
-	process_camera_movement(delta)
+	target = player_character.global_position
 
-func process_camera_movement(delta: float):
-	var direction = player_character.movement_direction
-	var camera_speed = SPEED * delta # pixels/second
-	var new_pos: float
-	
-	if direction == 0.0: pass
-		# if the player is not inputting, then we let them drift and keep the camera still
-	elif direction > 0.0: # player pressing right
-		target = player_character.global_position.x + PLAYER_LEAD
-		new_pos = min(global_position.x + camera_speed, target)
-		if new_pos > limit_right - 80.0: new_pos = limit_right - 80.0
-		global_position.x = new_pos
-	elif direction < 0.0: # player pressing left
-		target = player_character.global_position.x - PLAYER_LEAD
-		new_pos = max(global_position.x - camera_speed, target)
-		if new_pos < limit_left - 80.0: new_pos = limit_left - 80.0
-		global_position.x = new_pos
+	var weight: float = minf(SPEED * delta, 1.0)
+	float_position = float_position.lerp(target, weight)
 
-func get_center_of_screen() -> Vector2:
-	var center: Vector2
-	center = global_position
-	return center
+	var shake: Vector2 = Vector2.ZERO
+	#if shake_strength > 0.0:
+		#shake_strength = lerpf(shake_strength, 0.0, SHAKE_DECAY * delta)
+		#shake = _get_noise_offset(delta, shake_strength)
+
+	# One float position. One round.
+	var desired_position: Vector2 = float_position + shake
+	var rounded_position: Vector2 = desired_position.round()
+
+	offset = Vector2.ZERO
+	global_position = rounded_position
+	#cam_offset = rounded_position - desired_position
+	#_shader_material.set_shader_parameter("cam_offset", cam_offset)

@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://c6mwwkgmlon4f"]
+
+[ext_resource type="Script" uid="uid://b5iy34f0teuat" path="res://game_stuff/scripts/death_boundaries.gd" id="1_sgq1k"]
+
+[node name="death_boundaries" type="Area2D" unique_id=172032233]
+script = ExtResource("1_sgq1k")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
