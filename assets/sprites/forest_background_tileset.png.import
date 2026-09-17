@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4q1w0niqyxyr"
-path="res://.godot/imported/cheese_ray_spritesheet.png-1938fc89839d27f1a62267485498d1b9.ctex"
+uid="uid://b7uqjpcsmxi76"
+path="res://.godot/imported/forest_background_tileset.png-d44ee0beb8fd80e325e6ea083f947fa3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game_stuff/sprites/cheese_ray_spritesheet.png"
-dest_files=["res://.godot/imported/cheese_ray_spritesheet.png-1938fc89839d27f1a62267485498d1b9.ctex"]
+source_file="res://assets/sprites/forest_background_tileset.png"
+dest_files=["res://.godot/imported/forest_background_tileset.png-d44ee0beb8fd80e325e6ea083f947fa3.ctex"]
 
 [params]
 

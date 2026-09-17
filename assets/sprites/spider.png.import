@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3ig7ge75t7ie"
-path="res://.godot/imported/forest_tileset.png-2fd52671524b3475991078eaa33f71c9.ctex"
+uid="uid://dlissq7prdke7"
+path="res://.godot/imported/spider.png-dbc5531b74c769060cf324fe81092dfa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game_stuff/sprites/forest_tileset.png"
-dest_files=["res://.godot/imported/forest_tileset.png-2fd52671524b3475991078eaa33f71c9.ctex"]
+source_file="res://assets/sprites/spider.png"
+dest_files=["res://.godot/imported/spider.png-dbc5531b74c769060cf324fe81092dfa.ctex"]
 
 [params]
 

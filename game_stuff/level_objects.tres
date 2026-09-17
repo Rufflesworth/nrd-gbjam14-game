@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b7hi45yrmc1fj" path="res://game_stuff/scenes/cheeseable_block.tscn" id="1_m2r17"]
 [ext_resource type="PackedScene" uid="uid://bsuy8g7qa1qmm" path="res://game_stuff/scenes/falling_block.tscn" id="2_trogu"]
-[ext_resource type="PackedScene" uid="uid://duirmc7p2wdu0" path="res://game_stuff/scenes/platform_fruit.tscn" id="3_osogp"]
+[ext_resource type="PackedScene" uid="uid://duirmc7p2wdu0" path="res://game_stuff/scenes/hanging_platform.tscn" id="3_osogp"]
 [ext_resource type="PackedScene" uid="uid://c430tl3mo0wgt" path="res://game_stuff/enemies/walking_enemy.tscn" id="4_6xqpl"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_5sc1b"]

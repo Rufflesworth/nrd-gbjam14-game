@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c65mfl53ojnvq"]
 
 [ext_resource type="Script" uid="uid://dl1707v8supy0" path="res://game_stuff/scripts/simple_up_down.gd" id="1_5nqua"]
-[ext_resource type="Texture2D" uid="uid://dlissq7prdke7" path="res://game_stuff/sprites/spider.png" id="1_bufnp"]
+[ext_resource type="Texture2D" uid="uid://dlissq7prdke7" path="res://assets/sprites/spider.png" id="1_bufnp"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1vivr"]
 animations = [{

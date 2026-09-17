@@ -1,11 +1,11 @@
 [gd_resource type="TileSet" format=3 uid="uid://chm47wiu4ry0s"]
 
-[ext_resource type="Texture2D" uid="uid://d3ig7ge75t7ie" path="res://game_stuff/sprites/forest_tileset.png" id="1_my4w6"]
+[ext_resource type="Texture2D" uid="uid://d3ig7ge75t7ie" path="res://assets/sprites/forest_tileset.png" id="1_w67sh"]
 [ext_resource type="PackedScene" uid="uid://b7hi45yrmc1fj" path="res://game_stuff/scenes/cheeseable_block.tscn" id="3_ux0ky"]
 [ext_resource type="PackedScene" uid="uid://c430tl3mo0wgt" path="res://game_stuff/enemies/walking_enemy.tscn" id="4_nbphs"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_axmgp"]
-texture = ExtResource("1_my4w6")
+texture = ExtResource("1_w67sh")
 0:0/0 = 0
 2:0/0 = 0
 3:0/0 = 0

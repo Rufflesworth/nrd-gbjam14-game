@@ -121,23 +121,18 @@ func process_jump(delta: float):
 		if Input.is_action_pressed("player_down") and global_position.y < 96.0:
 			global_position.y += 1.0
 			float_pos.y += 1.0
-		elif can_jump:
-			prints("regular from ground jump")
-			jump()
+		elif can_jump: jump()
 		elif not is_on_floor():
 			if jump_buffer_count == 0.0:
 				jump_buffer_count = JUMP_BUFFER
-				prints("buffering a jump")
-	elif is_on_floor() and jump_buffer_count > 0.0:
-		prints("executing a buffered jump")
-		jump()
+	elif is_on_floor() and jump_buffer_count > 0.0: jump()
 	elif (not is_external_bounce and not Input.is_action_pressed("player_a") and velocity.y < JUMP_FORCE/3.0):
 		velocity.y = JUMP_FORCE / 3.0
 	
 	if jump_buffer_count > 0.0:
 		jump_buffer_count -= delta
 		if jump_buffer_count < 0.0:
-			prints("jump buffer timed out")
+			#prints("jump buffer timed out")
 			jump_buffer_count = 0.0
 
 func process_cheese_ray(delta: float):
@@ -163,17 +158,19 @@ func process_cheese_ray(delta: float):
 func process_animation():
 	match state:
 		STATES.RUNNING:
-			if facing == 1.0:
+			if velocity.x > 0.0:
 				$AnimatedSprite2D.flip_h = false
 				$AnimatedSprite2D.play("run")
-			elif facing == -1.0:
+			elif velocity.x < 0.0:
 				$AnimatedSprite2D.flip_h = true
 				$AnimatedSprite2D.play("run")
-			else: $AnimatedSprite2D.play("default")
+			else: $AnimatedSprite2D.play("idle")
 		STATES.AIRBORNE:
 			if facing == 1.0: $AnimatedSprite2D.flip_h = false
 			elif facing == -1.0: $AnimatedSprite2D.flip_h = true
-			$AnimatedSprite2D.play("jump")
+			
+			if velocity.y <= 0.0: $AnimatedSprite2D.play("jump")
+			else: $AnimatedSprite2D.play("fall")
 
 func jump():
 	velocity.y = JUMP_FORCE

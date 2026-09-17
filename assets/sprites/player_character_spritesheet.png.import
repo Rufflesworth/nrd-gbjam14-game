@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://crd804jt6bv2u"
-path="res://.godot/imported/mouse_run-export.png-85863badfdd533db0349d2767f6f26ec.ctex"
+uid="uid://f5slrbmokrmf"
+path="res://.godot/imported/player_character_spritesheet.png-3828838e9d9fa405dcf026ff3d757fca.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game_stuff/sprites/mouse_run-export.png"
-dest_files=["res://.godot/imported/mouse_run-export.png-85863badfdd533db0349d2767f6f26ec.ctex"]
+source_file="res://assets/sprites/player_character_spritesheet.png"
+dest_files=["res://.godot/imported/player_character_spritesheet.png-3828838e9d9fa405dcf026ff3d757fca.ctex"]
 
 [params]
 

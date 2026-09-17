@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://7nir77qudp5e"]
 
 [ext_resource type="Script" uid="uid://bc3ixl6n6o15a" path="res://game_stuff/scripts/cheese_ray.gd" id="1_683my"]
-[ext_resource type="Texture2D" uid="uid://4q1w0niqyxyr" path="res://game_stuff/sprites/cheese_ray_spritesheet.png" id="2_0c6vl"]
+[ext_resource type="Texture2D" uid="uid://4q1w0niqyxyr" path="res://assets/sprites/cheese_ray_spritesheet.png" id="2_0c6vl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0c6vl"]
 atlas = ExtResource("2_0c6vl")
