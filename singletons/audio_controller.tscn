@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bxivikgp2few2"]
 
 [ext_resource type="Script" uid="uid://cobbtr0k8dj78" path="res://singletons/audio_controller.gd" id="1_2rq82"]
+[ext_resource type="AudioStream" uid="uid://c6pmxed75x0q8" path="res://assets/audio/sfx/Cheese Collected.wav" id="2_lbdjd"]
 
 [node name="audio_controller" type="Node" unique_id=822225685]
 script = ExtResource("1_2rq82")
@@ -9,3 +10,6 @@ script = ExtResource("1_2rq82")
 volume_db = -3.0
 
 [node name="cheese_audio" type="AudioStreamPlayer" parent="." unique_id=1182651973]
+
+[node name="cheese_collected" type="AudioStreamPlayer" parent="." unique_id=1965323686]
+stream = ExtResource("2_lbdjd")

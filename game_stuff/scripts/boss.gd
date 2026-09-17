@@ -10,10 +10,14 @@ signal health_changed
 
 const ENTRANCE_TARGET = 40.0
 
-enum PHASES { ENTRANCE, LAUGH }
+enum PHASES { ENTRANCE, LAUGHING, BATTLE }
 var phase: PHASES = PHASES.ENTRANCE
 
+var boss_music: AudioStreamWAV = preload("res://assets/audio/music/Boss Theme.wav")
 var health: int = 80
+
+func _ready() -> void:
+	AudioController.stop_music_track()
 
 func _physics_process(delta: float) -> void:
 	match phase:
@@ -23,7 +27,12 @@ func _physics_process(delta: float) -> void:
 			if global_position.y >= ENTRANCE_TARGET:
 				global_position.y = ENTRANCE_TARGET
 				prints("The boss has entered!")
-				phase = PHASES.LAUGH
+				$laugh.play()
+				phase = PHASES.LAUGHING
+		PHASES.LAUGHING:
+			pass
+		PHASES.BATTLE:
+			pass
 
 func take_damage():
 	health -= 3
@@ -49,3 +58,8 @@ func _on_hit_box_area_entered(area: Area2D) -> void:
 				#$AnimatedSprite2D.play("bounce")
 				#$AnimatedSprite2D.frame = 0
 				#$boing_audio.play(0.0)
+
+
+func _on_laugh_finished() -> void:
+	AudioController.set_music_track(boss_music)
+	phase = PHASES.BATTLE

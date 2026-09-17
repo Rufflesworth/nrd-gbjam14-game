@@ -28,6 +28,9 @@ func set_music_track(music: AudioStreamWAV):
 	$background_music.stream = music
 	$background_music.play()
 
+func stop_music_track():
+	$background_music.stop()
+
 func increase_volume():
 	var masterIdx = AudioServer.get_bus_index("Master")
 	var currentVolume = AudioServer.get_bus_volume_linear(masterIdx)
@@ -47,3 +50,6 @@ func play_transform_into_cheese():
 func play_burst_into_cheese():
 	$cheese_audio.stream = burst_into_cheese_sfx
 	$cheese_audio.play(0.0)
+
+func play_cheese_collected():
+	$cheese_collected.play(0.0)

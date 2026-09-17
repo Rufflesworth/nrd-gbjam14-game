@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 signal freeing
 
-const SPEED = 80.0
+const SPEED = 96.0
 
 var camera: Camera2D
 var direction: float = 0.0 # right = 1.0, left = -1.0

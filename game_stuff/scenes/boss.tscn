@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://7n6gq8cvt7cr" path="res://game_stuff/scripts/boss.gd" id="1_r1x7c"]
 [ext_resource type="Texture2D" uid="uid://bpx5oaq5o60g8" path="res://assets/sprites/boss_spritesheet.png" id="2_a0a1g"]
 [ext_resource type="AudioStream" uid="uid://bb2tima2msjl3" path="res://assets/audio/sfx/Damage Boss.wav" id="3_ajp5e"]
+[ext_resource type="AudioStream" uid="uid://dq3hopyb6taiw" path="res://assets/audio/sfx/Evil Laugh.wav" id="4_uv1j4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ajp5e"]
 atlas = ExtResource("2_a0a1g")
@@ -47,4 +48,8 @@ shape = SubResource("RectangleShape2D_b4ysa")
 [node name="take_damage_audio" type="AudioStreamPlayer" parent="." unique_id=2012637854]
 stream = ExtResource("3_ajp5e")
 
+[node name="laugh" type="AudioStreamPlayer" parent="." unique_id=217160438]
+stream = ExtResource("4_uv1j4")
+
 [connection signal="area_entered" from="hit_box" to="." method="_on_hit_box_area_entered"]
+[connection signal="finished" from="laugh" to="." method="_on_laugh_finished"]

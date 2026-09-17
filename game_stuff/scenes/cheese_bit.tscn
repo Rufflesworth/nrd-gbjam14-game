@@ -1,19 +1,19 @@
 [gd_scene format=3 uid="uid://cj2d1tsl27yq1"]
 
 [ext_resource type="Script" uid="uid://do2jjkhyde5u8" path="res://game_stuff/scripts/cheese_bit.gd" id="1_7sx36"]
-[ext_resource type="Texture2D" uid="uid://cd3gikjes818s" path="res://game_stuff/sprites/test_spritesheet.png" id="2_tpk73"]
+[ext_resource type="Texture2D" uid="uid://l0eq0ib4dtg" path="res://assets/sprites/cheeses_spritesheet.png" id="2_tpk73"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_76vem"]
 atlas = ExtResource("2_tpk73")
-region = Rect2(0, 32, 16, 16)
+region = Rect2(64, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fo736"]
 atlas = ExtResource("2_tpk73")
-region = Rect2(16, 32, 16, 16)
+region = Rect2(80, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_igxoq"]
 atlas = ExtResource("2_tpk73")
-region = Rect2(32, 32, 16, 16)
+region = Rect2(96, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1vivr"]
 animations = [{

@@ -211,6 +211,7 @@ func take_damage():
 func _on_collect_box_area_entered(area: Area2D) -> void:
 	if area.is_in_group("collectables"):
 		area.get_parent().collect()
+		AudioController.play_cheese_collected()
 		emit_signal("cheese_collected")
 
 func _on_cheese_ray_freeing():

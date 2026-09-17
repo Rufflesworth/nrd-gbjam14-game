@@ -95,6 +95,8 @@ size = Vector2(46, 12)
 size = Vector2(12, 24)
 
 [node name="platform_fruit" type="StaticBody2D" unique_id=1130830861]
+collision_layer = 13
+collision_mask = 13
 script = ExtResource("1_uvbno")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=676148393]

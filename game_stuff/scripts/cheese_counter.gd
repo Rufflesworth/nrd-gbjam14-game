@@ -8,6 +8,7 @@ func _ready() -> void:
 	var game = GlobalHelper.get_game()
 	game.connect("retrying_current_room", _on_retrying_current_room)
 	game.connect("new_room_loaded", _on_new_room_loaded)
+	game.connect("room_completed", _on_game_room_completed)
 
 func _on_new_room_loaded():
 	var game = GlobalHelper.get_game()
@@ -23,3 +24,7 @@ func _on_retrying_current_room():
 func _on_player_character_collected_cheese():
 	room_cheese += 1
 	$amount.text = str(room_cheese + banked_cheese)
+
+func _on_game_room_completed():
+	banked_cheese += room_cheese
+	room_cheese = 0
