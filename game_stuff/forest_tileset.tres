@@ -1,8 +1,24 @@
 [gd_resource type="TileSet" format=3 uid="uid://chm47wiu4ry0s"]
 
 [ext_resource type="Texture2D" uid="uid://d3ig7ge75t7ie" path="res://assets/sprites/forest_tileset.png" id="1_w67sh"]
+[ext_resource type="Texture2D" uid="uid://dre8fec3fc16x" path="res://assets/sprites/test_decorations.png" id="1_wd1ej"]
 [ext_resource type="PackedScene" uid="uid://b7hi45yrmc1fj" path="res://game_stuff/scenes/cheeseable_block.tscn" id="3_ux0ky"]
 [ext_resource type="PackedScene" uid="uid://c430tl3mo0wgt" path="res://game_stuff/enemies/walking_enemy.tscn" id="4_nbphs"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bkl7a"]
+texture = ExtResource("1_wd1ej")
+0:0/animation_columns = 4
+0:0/animation_frame_0/duration = 1.0
+0:0/animation_frame_1/duration = 1.0
+0:0/animation_frame_2/duration = 1.0
+0:0/animation_frame_3/duration = 1.0
+0:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:1/0 = 0
+8:1/0 = 0
+7:1/0 = 0
+6:1/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_axmgp"]
 texture = ExtResource("1_w67sh")
@@ -99,3 +115,4 @@ physics_layer_0/collision_layer = 15
 physics_layer_0/collision_mask = 15
 sources/3 = SubResource("TileSetScenesCollectionSource_y7fmj")
 sources/2 = SubResource("TileSetAtlasSource_axmgp")
+sources/0 = SubResource("TileSetAtlasSource_bkl7a")

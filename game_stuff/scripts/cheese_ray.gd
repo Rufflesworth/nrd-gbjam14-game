@@ -37,6 +37,6 @@ func _on_hit_box_area_entered(area: Area2D) -> void:
 		enemy.take_damage()
 		impact()
 
-func _on_hit_box_body_entered(body: Node2D) -> void:
+func _on_hit_box_body_entered(_body: Node2D) -> void:
 	#prints("cheese ray entered body:", body)
 	impact()

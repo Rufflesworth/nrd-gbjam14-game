@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://ciemlqfn8ybsa"]
+
+[ext_resource type="PackedScene" uid="uid://0kfabk26bj5v" path="res://game_stuff/rooms/1_beginning.tscn" id="1_ykd2m"]
+[ext_resource type="PackedScene" uid="uid://y1ffoao5u7t4" path="res://game_stuff/rooms/2_canopy_one.tscn" id="2_pret5"]
+[ext_resource type="PackedScene" uid="uid://bhfd020dp4433" path="res://game_stuff/rooms/3_canopy_two.tscn" id="3_wa8vx"]
+[ext_resource type="PackedScene" uid="uid://6ub0uusvljhi" path="res://game_stuff/rooms/4_back_to_ground.tscn" id="4_6ipdc"]
+[ext_resource type="PackedScene" uid="uid://cd216w57cmke5" path="res://game_stuff/rooms/boss_room.tscn" id="5_rjqs2"]
+
+[node name="test_room1" unique_id=2025475812 instance=ExtResource("1_ykd2m")]
+
+[node name="test_room1" parent="." index="9" unique_id=651315804 instance=ExtResource("2_pret5")]
+position = Vector2(287, -223)
+
+[node name="test_room2" parent="." index="10" unique_id=1574722940 instance=ExtResource("3_wa8vx")]
+position = Vector2(854, -221)
+
+[node name="test_room3" parent="." index="11" unique_id=586381280 instance=ExtResource("4_6ipdc")]
+position = Vector2(1623, -16)
+
+[node name="boss_room" parent="." index="12" unique_id=2012928900 instance=ExtResource("5_rjqs2")]
+position = Vector2(2171, 2)
