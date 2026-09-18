@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bnb2moo71mwqq"]
 
 [ext_resource type="Script" uid="uid://dqpg3fp011o1o" path="res://game_stuff/scripts/game.gd" id="1_771w1"]
-[ext_resource type="PackedScene" uid="uid://0kfabk26bj5v" path="res://game_stuff/rooms/1_beginning.tscn" id="2_xrpyh"]
+[ext_resource type="PackedScene" uid="uid://cd216w57cmke5" path="res://game_stuff/rooms/boss_room.tscn" id="2_xrpyh"]
 [ext_resource type="PackedScene" uid="uid://6h2fjshyhuyx" path="res://game_stuff/scenes/cheese_counter.tscn" id="3_lteo3"]
 [ext_resource type="AudioStream" uid="uid://cg4i7pgcsdfdd" path="res://assets/audio/music/Planet Theme.wav" id="3_xrpyh"]
 [ext_resource type="PackedScene" uid="uid://t26psbjy3g35" path="res://game_stuff/scenes/boss_life_bar.tscn" id="5_l2ul3"]

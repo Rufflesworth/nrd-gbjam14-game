@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://822e540u38ee"]
+
+[ext_resource type="Texture2D" uid="uid://cm534rjh7142o" path="res://assets/sprites/spiky_fruit_spritesheet.png" id="1_0k367"]
+[ext_resource type="Script" uid="uid://bv5jdouyoxxt1" path="res://game_stuff/scripts/falling_spiky_fruit.gd" id="1_fmjh1"]
+[ext_resource type="Texture2D" uid="uid://l0eq0ib4dtg" path="res://assets/sprites/cheeses_spritesheet.png" id="2_8o2c4"]
+[ext_resource type="AudioStream" uid="uid://mg3fri0bi2ud" path="res://assets/audio/sfx/Cheese Boing.wav" id="3_edcn7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8o2c4"]
+atlas = ExtResource("2_8o2c4")
+region = Rect2(128, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fmjh1"]
+atlas = ExtResource("1_0k367")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0uswa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8o2c4")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": 0,
+"name": &"burst",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fmjh1")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1vivr"]
+size = Vector2(8, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8vrlf"]
+size = Vector2(12, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v5gy4"]
+size = Vector2(10, 10)
+
+[node name="spiky_fruit" type="CharacterBody2D" unique_id=1217375816]
+collision_layer = 9
+collision_mask = 9
+script = ExtResource("1_fmjh1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2038892036]
+sprite_frames = SubResource("SpriteFrames_0uswa")
+animation = &"burst"
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=332835526]
+visible = false
+shape = SubResource("RectangleShape2D_1vivr")
+disabled = true
+
+[node name="cheeseable_box" type="Area2D" parent="." unique_id=1717527796 groups=["cheeseable_boxes"]]
+visible = false
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cheeseable_box" unique_id=501952951]
+shape = SubResource("RectangleShape2D_8vrlf")
+
+[node name="hit_box" type="Area2D" parent="." unique_id=739496672]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hit_box" unique_id=1998485998]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_v5gy4")
+
+[node name="boing_audio" type="AudioStreamPlayer" parent="." unique_id=594626571]
+stream = ExtResource("3_edcn7")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="area_entered" from="hit_box" to="." method="_on_hit_box_area_entered"]

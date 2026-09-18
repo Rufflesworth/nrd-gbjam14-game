@@ -1,19 +1,21 @@
 extends Camera2D
 
-@export var player_character: Node2D
+@export var target_to_follow: Node2D
 
-const SPEED = 96.0
+const SPEED = 120
 const PLAYER_LEAD = 0.0
 
 var target: Vector2
 var float_position: Vector2
 
 func _ready() -> void:
-	if player_character == null: prints(name, "is missing a reference to the player character")
-	else: global_position = player_character.global_position
+	if target_to_follow == null: prints(name, "is missing a reference to the player character")
+	else: global_position = target_to_follow.global_position
 
 func _physics_process(delta: float) -> void:
-	target = player_character.global_position
+	if target_to_follow == null: return
+	
+	target = target_to_follow.global_position
 
 	var weight: float = minf(SPEED * delta, 1.0)
 	float_position = float_position.lerp(target, weight)

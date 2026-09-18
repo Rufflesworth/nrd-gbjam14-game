@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4q1w0niqyxyr"
-path="res://.godot/imported/cheese_ray_spritesheet.png-39de716f69e931afe533b7cc6f15920a.ctex"
+uid="uid://btaovf0oq82qh"
+path="res://.godot/imported/balloon_alien_platform_spritesheet.png-d85e93c99274bf7be957624980747208.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/cheese_ray_spritesheet.png"
-dest_files=["res://.godot/imported/cheese_ray_spritesheet.png-39de716f69e931afe533b7cc6f15920a.ctex"]
+source_file="res://assets/sprites/balloon_alien_platform_spritesheet.png"
+dest_files=["res://.godot/imported/balloon_alien_platform_spritesheet.png-d85e93c99274bf7be957624980747208.ctex"]
 
 [params]
 

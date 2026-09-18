@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://d3ig7ge75t7ie" path="res://assets/sprites/forest_tileset.png" id="1_w67sh"]
 [ext_resource type="Texture2D" uid="uid://dre8fec3fc16x" path="res://assets/sprites/test_decorations.png" id="1_wd1ej"]
 [ext_resource type="PackedScene" uid="uid://b7hi45yrmc1fj" path="res://game_stuff/scenes/cheeseable_block.tscn" id="3_ux0ky"]
-[ext_resource type="PackedScene" uid="uid://c430tl3mo0wgt" path="res://game_stuff/enemies/walking_enemy.tscn" id="4_nbphs"]
+[ext_resource type="PackedScene" uid="uid://c430tl3mo0wgt" path="res://game_stuff/enemies_hazards/walking_enemy.tscn" id="4_wd1ej"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bkl7a"]
 texture = ExtResource("1_wd1ej")
@@ -108,7 +108,7 @@ texture = ExtResource("1_w67sh")
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_y7fmj"]
 scenes/1/scene = ExtResource("3_ux0ky")
-scenes/2/scene = ExtResource("4_nbphs")
+scenes/2/scene = ExtResource("4_wd1ej")
 
 [resource]
 physics_layer_0/collision_layer = 15

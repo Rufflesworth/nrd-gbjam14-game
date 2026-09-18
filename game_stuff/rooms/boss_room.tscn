@@ -27,10 +27,10 @@ position = Vector2(80, -24)
 position = Vector2(24, 64)
 is_boss_room = true
 
-[node name="camera" parent="." unique_id=2026864448 node_paths=PackedStringArray("player_character") instance=ExtResource("4_65vfd")]
+[node name="camera" parent="." unique_id=2026864448 node_paths=PackedStringArray("target_to_follow") instance=ExtResource("4_65vfd")]
 limit_left = -32
 limit_top = 0
 limit_right = 192
-player_character = NodePath("../player_character")
+target_to_follow = NodePath("../player_character")
 
 [node name="room_exit" parent="." unique_id=1074077257 instance=ExtResource("6_qgr26")]

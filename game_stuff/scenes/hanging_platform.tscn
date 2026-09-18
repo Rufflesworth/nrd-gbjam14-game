@@ -92,7 +92,7 @@ animations = [{
 size = Vector2(46, 12)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8vrlf"]
-size = Vector2(12, 24)
+size = Vector2(8, 28)
 
 [node name="platform_fruit" type="StaticBody2D" unique_id=1130830861]
 collision_layer = 13
@@ -110,12 +110,11 @@ shape = SubResource("RectangleShape2D_1vivr")
 disabled = true
 
 [node name="cheeseable_box" type="Area2D" parent="." unique_id=2099193716 groups=["cheeseable_boxes"]]
-visible = false
 collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cheeseable_box" unique_id=1848417675]
-position = Vector2(0, -2)
+position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_8vrlf")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

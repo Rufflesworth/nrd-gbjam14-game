@@ -5,8 +5,9 @@
 [ext_resource type="TileSet" uid="uid://dy8u6wx0pg0xq" path="res://game_stuff/one_way_platforms.tres" id="3_krpj8"]
 [ext_resource type="PackedScene" uid="uid://d2taah5jw3vdv" path="res://game_stuff/scenes/balloon_alien.tscn" id="4_7sa6m"]
 [ext_resource type="TileSet" uid="uid://b1oo0rdxiy0it" path="res://game_stuff/level_objects.tres" id="5_eqpgu"]
-[ext_resource type="PackedScene" uid="uid://c65mfl53ojnvq" path="res://game_stuff/enemies/simple_up_down.tscn" id="6_16abl"]
+[ext_resource type="PackedScene" uid="uid://c65mfl53ojnvq" path="res://game_stuff/enemies_hazards/simple_up_down.tscn" id="6_16abl"]
 [ext_resource type="PackedScene" uid="uid://dix5q8m6k7gy2" path="res://game_stuff/scenes/player_character.tscn" id="7_dulu5"]
+[ext_resource type="PackedScene" uid="uid://lsvworas3qac" path="res://game_stuff/enemies_hazards/spiky_fruit_spawner.tscn" id="7_krpj8"]
 [ext_resource type="PackedScene" uid="uid://ckwf0g7i3reer" path="res://game_stuff/scenes/camera.tscn" id="8_57cw3"]
 [ext_resource type="PackedScene" uid="uid://b2f25vrdk1r5j" path="res://game_stuff/scenes/room_exit.tscn" id="9_74ydi"]
 [ext_resource type="PackedScene" uid="uid://c6mwwkgmlon4f" path="res://game_stuff/scenes/death_boundaries.tscn" id="10_u6lh1"]
@@ -33,18 +34,18 @@ tile_set = ExtResource("2_w34ko")
 collision_enabled = false
 
 [node name="environment" type="TileMapLayer" parent="." unique_id=1700741238]
-tile_map_data = PackedByteArray("AAAAAAQAAgAJAAEAAAABAAQAAgAKAAEAAAAGAAgAAgAHAAYAAAAGAAcAAgAHAAYAAAAGAAYAAgAHAAYAAAAGAAUAAgAHAAYAAAAGAAQAAgAHAAYAAAAGAAMAAgAHAAYAAAAGAAIAAgAHAAYAAAAGAAEAAgAHAAYAAAAGAAAAAgAHAAYAAAAMAAcAAgAHAAYAAAAMAAYAAgAHAAYAAAAMAAUAAgAHAAYAAAAMAAQAAgAHAAYAAAAMAAMAAgAHAAYAAAAMAAIAAgAHAAYAAAAMAAgAAgAHAAYAAAAMAAAAAgAHAAQAAAAPAAgAAgAHAAYAAAAPAAcAAgAHAAYAAAAPAAYAAgAHAAYAAAAPAAUAAgAHAAYAAAAPAAQAAgAHAAYAAAAPAAMAAgAHAAYAAAAPAAIAAgAHAAYAAAAPAAEAAgAHAAUAAAAPAAAAAgAHAAYAAAAMAAEAAgAHAAYAAAAYAAAAAgAHAAYAAAAYAAEAAgAHAAYAAAAYAAIAAgAHAAYAAAAYAAMAAgAHAAYAAAAYAAQAAgAHAAYAAAAYAAUAAgAHAAUAAAAYAAYAAgAHAAQAAAAYAAcAAgAHAAYAAAAYAAgAAgAHAAYAAAAxAAgAAgAHAAEAAAAxAAcAAgAHAAEAAAAxAAYAAgAHAAEAAAAxAAUAAgAHAAEAAAAxAAQAAgAHAAEAAAAxAAMAAgAHAAEAAAAxAAIAAgAHAAEAAAAxAAEAAgAHAAEAAAAxAAAAAgAHAAEAAAApAAAAAgAHAAQAAAApAAEAAgAHAAYAAAApAAIAAgAHAAYAAAApAAMAAgAHAAYAAAApAAQAAgAHAAYAAAApAAUAAgAHAAYAAAApAAYAAgAHAAQAAAApAAcAAgAHAAUAAAApAAgAAgAHAAYAAAAsAAAAAgAHAAUAAAAsAAEAAgAHAAYAAAAsAAIAAgAHAAYAAAAsAAMAAgAHAAYAAAAsAAQAAgAHAAYAAAAsAAUAAgAHAAYAAAAsAAYAAgAHAAYAAAAsAAcAAgAHAAYAAAAsAAgAAgAHAAUAAAA=")
+tile_map_data = PackedByteArray("AAAAAAQAAgAJAAEAAAABAAQAAgAKAAEAAAAGAAgAAgAHAAYAAAAGAAcAAgAHAAYAAAAGAAYAAgAHAAYAAAAGAAUAAgAHAAYAAAAGAAQAAgAHAAYAAAAGAAMAAgAHAAYAAAAGAAIAAgAHAAYAAAAGAAEAAgAHAAYAAAAGAAAAAgAHAAYAAAAMAAcAAgAHAAYAAAAMAAYAAgAHAAYAAAAMAAUAAgAHAAYAAAAMAAQAAgAHAAYAAAAMAAMAAgAHAAYAAAAMAAIAAgAHAAYAAAAMAAgAAgAHAAYAAAAMAAAAAgAHAAQAAAAPAAgAAgAHAAYAAAAPAAcAAgAHAAYAAAAPAAYAAgAHAAYAAAAPAAUAAgAHAAYAAAAPAAQAAgAHAAYAAAAPAAMAAgAHAAYAAAAPAAIAAgAHAAYAAAAPAAEAAgAHAAUAAAAPAAAAAgAHAAYAAAAMAAEAAgAHAAYAAAAYAAAAAgAHAAYAAAAYAAEAAgAHAAYAAAAYAAIAAgAHAAYAAAAYAAMAAgAHAAYAAAAYAAQAAgAHAAYAAAAYAAUAAgAHAAUAAAAYAAYAAgAHAAQAAAAYAAcAAgAHAAYAAAAYAAgAAgAHAAYAAAAxAAgAAgAHAAEAAAAxAAcAAgAHAAEAAAAxAAYAAgAHAAEAAAAxAAUAAgAHAAEAAAAxAAQAAgAHAAEAAAAxAAMAAgAHAAEAAAAxAAIAAgAHAAEAAAAxAAEAAgAHAAEAAAAxAAAAAgAHAAEAAAApAAAAAgAHAAQAAAApAAEAAgAHAAYAAAApAAIAAgAHAAYAAAApAAMAAgAHAAYAAAApAAQAAgAHAAYAAAApAAUAAgAHAAYAAAApAAYAAgAHAAQAAAApAAcAAgAHAAUAAAApAAgAAgAHAAYAAAAsAAAAAgAHAAUAAAAsAAEAAgAHAAYAAAAsAAIAAgAHAAYAAAAsAAMAAgAHAAYAAAAsAAQAAgAHAAYAAAAsAAUAAgAHAAYAAAAsAAYAAgAHAAYAAAAsAAcAAgAHAAYAAAAsAAgAAgAHAAUAAAAeAAgAAgAHAAEAAAAeAAcAAgAJAAQAAAAeAAYAAgAHAAEAAAAeAAUAAgAHAAEAAAAeAAQAAgAHAAEAAAAeAAMAAgAHAAEAAAAeAAIAAgAHAAEAAAAeAAEAAgAHAAEAAAAeAAAAAgAHAAEAAAAkAAgAAgAJAAMAAAAkAAcAAgAJAAQAAAAkAAYAAgAHAAEAAAAkAAUAAgAHAAEAAAAkAAQAAgAHAAEAAAAkAAMAAgAHAAEAAAAkAAIAAgAHAAEAAAAkAAEAAgAHAAEAAAAkAAAAAgAHAAEAAAA=")
 tile_set = ExtResource("2_w34ko")
 
+[node name="balloon_alien" parent="environment" unique_id=1600681781 instance=ExtResource("4_7sa6m")]
+position = Vector2(56, 79)
+
 [node name="one-way-platforms" type="TileMapLayer" parent="." unique_id=775918527]
-tile_map_data = PackedByteArray("AAAKAAAAAgAFAAQAAAALAAAAAgAGAAQAAAAQAAEAAgAIAAUAAAARAAEAAgAJAAUAAAAWAAYAAgAFAAQAAAAXAAYAAgAGAAQAAAAQAAgAAgABAAYAAAARAAgAAgACAAYAAAASAAgAAgADAAQAAAATAAgAAgAEAAYAAAAUAAgAAgAFAAYAAAAoAAAAAgAGAAQAAAAoAAYAAgAGAAQAAAArAAcAAgAJAAUAAAAuAAAAAgAJAAUAAAAuAAgAAgAJAAUAAAAnAAAAAgAFAAQAAAAnAAYAAgAFAAQAAAAqAAcAAgAIAAUAAAAtAAAAAgAIAAUAAAAtAAgAAgAIAAUAAAAZAAUAAgAIAAUAAAAaAAUAAgAJAAUAAAA=")
+tile_map_data = PackedByteArray("AAAKAAAAAgAFAAQAAAALAAAAAgAGAAQAAAAQAAEAAgAIAAUAAAARAAEAAgAJAAUAAAAWAAYAAgAFAAQAAAAXAAYAAgAGAAQAAAAQAAgAAgABAAYAAAARAAgAAgACAAYAAAASAAgAAgADAAQAAAATAAgAAgAEAAYAAAAUAAgAAgAFAAYAAAAoAAAAAgAGAAQAAAAoAAYAAgAGAAQAAAArAAcAAgAJAAUAAAAuAAAAAgAJAAUAAAAuAAgAAgAJAAUAAAAnAAAAAgAFAAQAAAAnAAYAAgAFAAQAAAAqAAcAAgAIAAUAAAAtAAAAAgAIAAUAAAAtAAgAAgAIAAUAAAAZAAUAAgAIAAUAAAAaAAUAAgAJAAUAAAAfAAcAAgAIAAEAAAAgAAcAAgAJAAEAAAAhAAcAAgAKAAEAAAAhAAgAAgAEAAEAAAAiAAgAAgAFAAEAAAAjAAgAAgAGAAEAAAAlAAcAAgAJAAEAAAAmAAcAAgAKAAEAAAA=")
 tile_set = ExtResource("3_krpj8")
 
-[node name="balloon_alien" parent="one-way-platforms" unique_id=1600681781 instance=ExtResource("4_7sa6m")]
-position = Vector2(56, 72)
-
 [node name="level_objects" type="TileMapLayer" parent="." unique_id=941980574]
-tile_map_data = PackedByteArray("AAASAAcAAAAAAAAAAQATAAcAAAAAAAAAAQA=")
+tile_map_data = PackedByteArray("AAASAAcAAAAAAAAAAQATAAcAAAAAAAAAAQAgAAYAAAAAAAAAAQAiAAcAAAAAAAAAAQA=")
 tile_set = ExtResource("5_eqpgu")
 
 [node name="simple_up_down" parent="level_objects" unique_id=1752127183 instance=ExtResource("6_16abl")]
@@ -55,13 +56,33 @@ patrol_distance = 72.0
 position = Vector2(312, 16)
 patrol_distance = 64.0
 
+[node name="simple_up_down3" parent="level_objects" unique_id=698478300 instance=ExtResource("6_16abl")]
+position = Vector2(456, 8)
+patrol_distance = 112.0
+
+[node name="spiky_fruit_spawner" parent="level_objects" unique_id=334204174 instance=ExtResource("7_krpj8")]
+position = Vector2(120, -16)
+initial_delay = -2.0
+
+[node name="spiky_fruit_spawner2" parent="level_objects" unique_id=910037786 instance=ExtResource("7_krpj8")]
+position = Vector2(224, -16)
+spawn_timer = 2.0
+
+[node name="spiky_fruit_spawner3" parent="level_objects" unique_id=649640605 instance=ExtResource("7_krpj8")]
+position = Vector2(616, -16)
+spawn_timer = 1.0
+
+[node name="spiky_fruit_spawner4" parent="level_objects" unique_id=1148642086 instance=ExtResource("7_krpj8")]
+position = Vector2(536, -15)
+spawn_timer = 4.0
+
 [node name="player_character" parent="." unique_id=1719070970 instance=ExtResource("7_dulu5")]
 position = Vector2(8, 48)
 
-[node name="camera" parent="." unique_id=2026864448 node_paths=PackedStringArray("player_character") instance=ExtResource("8_57cw3")]
+[node name="camera" parent="." unique_id=2026864448 node_paths=PackedStringArray("target_to_follow") instance=ExtResource("8_57cw3")]
 limit_top = 0
 limit_right = 800
-player_character = NodePath("../player_character")
+target_to_follow = NodePath("../environment/balloon_alien")
 
 [node name="room_exit" parent="." unique_id=1074077257 instance=ExtResource("9_74ydi")]
 position = Vector2(768, 160)

@@ -1,6 +1,6 @@
 extends StaticBody2D
 
-const SPEED = 15.0
+const SPEED = 12.0
 
 var float_pos: Vector2
 var velocity: Vector2

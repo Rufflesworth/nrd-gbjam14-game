@@ -187,6 +187,7 @@ func apply_external_force(vec: Vector2):
 	prints("something is trying to push away the pc:", vec)
 	velocity = vec
 	is_external_bounce = true
+	state = STATES.AIRBORNE
 
 func add_external_velocity(vel: Vector2):
 	external_velocity = vel

@@ -1,70 +1,67 @@
 [gd_scene format=3 uid="uid://7nir77qudp5e"]
 
 [ext_resource type="Script" uid="uid://bc3ixl6n6o15a" path="res://game_stuff/scripts/cheese_ray.gd" id="1_683my"]
-[ext_resource type="Texture2D" uid="uid://4q1w0niqyxyr" path="res://assets/sprites/cheese_ray_spritesheet.png" id="2_0c6vl"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0c6vl"]
-atlas = ExtResource("2_0c6vl")
-region = Rect2(0, 8, 8, 8)
+[ext_resource type="Texture2D" uid="uid://l0eq0ib4dtg" path="res://assets/sprites/cheeses_spritesheet.png" id="2_0c6vl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1wtel"]
 atlas = ExtResource("2_0c6vl")
-region = Rect2(8, 8, 8, 8)
+region = Rect2(128, 8, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y74q8"]
 atlas = ExtResource("2_0c6vl")
-region = Rect2(16, 8, 8, 8)
+region = Rect2(136, 8, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ay34b"]
 atlas = ExtResource("2_0c6vl")
-region = Rect2(24, 8, 8, 8)
+region = Rect2(144, 8, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qqt03"]
 atlas = ExtResource("2_0c6vl")
-region = Rect2(0, 16, 8, 8)
+region = Rect2(152, 8, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7ixt2"]
 atlas = ExtResource("2_0c6vl")
-region = Rect2(8, 16, 8, 8)
+region = Rect2(128, 16, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hs6i5"]
 atlas = ExtResource("2_0c6vl")
-region = Rect2(16, 16, 8, 8)
+region = Rect2(136, 16, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ppiwu"]
 atlas = ExtResource("2_0c6vl")
-region = Rect2(0, 24, 8, 8)
+region = Rect2(144, 16, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v1e4f"]
 atlas = ExtResource("2_0c6vl")
-region = Rect2(8, 24, 8, 8)
+region = Rect2(128, 24, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ai0v4"]
 atlas = ExtResource("2_0c6vl")
-region = Rect2(16, 24, 8, 8)
+region = Rect2(136, 24, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r31d8"]
 atlas = ExtResource("2_0c6vl")
-region = Rect2(24, 24, 8, 8)
+region = Rect2(144, 24, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2cih1"]
 atlas = ExtResource("2_0c6vl")
-region = Rect2(0, 32, 8, 8)
+region = Rect2(152, 24, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2wojc"]
 atlas = ExtResource("2_0c6vl")
-region = Rect2(8, 32, 8, 8)
+region = Rect2(128, 32, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tbjeg"]
 atlas = ExtResource("2_0c6vl")
-region = Rect2(16, 32, 8, 8)
+region = Rect2(136, 32, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6etag"]
+atlas = ExtResource("2_0c6vl")
+region = Rect2(144, 32, 8, 8)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1vivr"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0c6vl")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1wtel")
 }, {
@@ -103,6 +100,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_tbjeg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6etag")
 }],
 "loop": 1,
 "name": &"default",
@@ -123,7 +123,6 @@ script = ExtResource("1_683my")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1970618766]
 sprite_frames = SubResource("SpriteFrames_1vivr")
 autoplay = "default"
-frame_progress = 0.65469545
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=960635485]
 shape = SubResource("RectangleShape2D_8vrlf")

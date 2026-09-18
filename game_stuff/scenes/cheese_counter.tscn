@@ -5,7 +5,6 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_1vivr"]
 font = ExtResource("2_heok4")
-font_color = Color(0.7372549, 0.58431375, 0.21960784, 1)
 
 [node name="cheese_counter" type="Control" unique_id=571966882]
 layout_mode = 3

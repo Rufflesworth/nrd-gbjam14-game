@@ -9,6 +9,7 @@ func _ready() -> void:
 	game.connect("retrying_current_room", _on_retrying_current_room)
 	game.connect("new_room_loaded", _on_new_room_loaded)
 	game.connect("room_completed", _on_game_room_completed)
+	$amount.label_settings.font_color = GlobalHelper.get_game().PALETTE[2]
 
 func _on_new_room_loaded():
 	var game = GlobalHelper.get_game()

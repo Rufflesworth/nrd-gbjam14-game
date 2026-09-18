@@ -8,6 +8,10 @@ signal boss_room_loaded
 @export var first_room: PackedScene
 @export var stage_music: AudioStreamWAV
 
+## [ Black, Shade, Midtone, Highlight ]
+var PALETTE: Array = [Color.from_rgba8(53.0, 61.0, 70.0), Color.from_rgba8(0.0,0.0,0.0),
+	 Color.from_rgba8(240.0,182.0,149.0), Color.from_rgba8(0.0,0.0,0.0)]
+
 var current_room: Node2D
 var current_room_resource: PackedScene
 

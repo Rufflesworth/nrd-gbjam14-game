@@ -2,18 +2,19 @@
 
 [ext_resource type="Script" uid="uid://sg1gjg5ba0ax" path="res://game_stuff/scripts/cheeseable_block.gd" id="1_meq8f"]
 [ext_resource type="Texture2D" uid="uid://l0eq0ib4dtg" path="res://assets/sprites/cheeses_spritesheet.png" id="2_y8mno"]
+[ext_resource type="Texture2D" uid="uid://d3ig7ge75t7ie" path="res://assets/sprites/forest_tileset.png" id="3_g8jpv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g8jpv"]
 atlas = ExtResource("2_y8mno")
 region = Rect2(128, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1plca"]
-atlas = ExtResource("2_y8mno")
-region = Rect2(48, 0, 16, 16)
+atlas = ExtResource("3_g8jpv")
+region = Rect2(0, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1watg"]
-atlas = ExtResource("2_y8mno")
-region = Rect2(32, 0, 16, 16)
+atlas = ExtResource("3_g8jpv")
+region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1vivr"]
 animations = [{

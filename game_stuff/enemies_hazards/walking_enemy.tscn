@@ -98,10 +98,7 @@ script = ExtResource("1_b55xs")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2038892036]
 sprite_frames = SubResource("SpriteFrames_1vivr")
-animation = &"bounce"
 autoplay = "default"
-frame = 2
-frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=332835526]
 position = Vector2(0, 4)

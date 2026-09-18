@@ -1,37 +1,45 @@
 [gd_scene format=3 uid="uid://d2taah5jw3vdv"]
 
 [ext_resource type="Script" uid="uid://bmy1hnwl5iqrg" path="res://game_stuff/scripts/balloon_alien.gd" id="1_v8lnr"]
+[ext_resource type="Texture2D" uid="uid://btaovf0oq82qh" path="res://assets/sprites/balloon_alien_platform_spritesheet.png" id="2_3t8xh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hhidd"]
+atlas = ExtResource("2_3t8xh")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1vivr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hhidd")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8vrlf"]
-size = Vector2(32, 8)
+size = Vector2(48, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v5gy4"]
 size = Vector2(28, 4)
 
 [node name="balloon_alien" type="AnimatableBody2D" unique_id=1600681781]
+collision_layer = 5
 collision_mask = 0
 sync_to_physics = false
 script = ExtResource("1_v8lnr")
 
-[node name="alien" type="ColorRect" parent="." unique_id=1917087349]
-offset_left = -16.0
-offset_top = 4.0
-offset_right = 16.0
-offset_bottom = 36.0
-color = Color(0.5917088, 0.5177553, 0.25754347, 1)
-
-[node name="platform" type="ColorRect" parent="." unique_id=1850615639]
-offset_left = -16.0
-offset_top = -4.0
-offset_right = 16.0
-offset_bottom = 4.0
-color = Color(0.5649617, 0.5649616, 0.5649616, 1)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1188544132]
+sprite_frames = SubResource("SpriteFrames_1vivr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=788573413]
+position = Vector2(0, -15)
 shape = SubResource("RectangleShape2D_8vrlf")
 one_way_collision = true
 
 [node name="capture_pc_box" type="Area2D" parent="." unique_id=2015188743]
+position = Vector2(0, -16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="capture_pc_box" unique_id=2017282666]
 position = Vector2(0, -6)

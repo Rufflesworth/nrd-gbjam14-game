@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://lsvworas3qac"]
+
+[ext_resource type="Script" uid="uid://60xlwdayogih" path="res://game_stuff/scripts/spiky_fruit_spawner.gd" id="1_ukgsb"]
+
+[node name="spiky_fruit_spawner" type="Node2D" unique_id=334204174]
+script = ExtResource("1_ukgsb")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2129806093]
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+color = Color(0.6529715, 0.15033051, 0.7690343, 1)
