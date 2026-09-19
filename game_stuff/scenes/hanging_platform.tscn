@@ -23,9 +23,9 @@ region = Rect2(144, 0, 48, 48)
 atlas = ExtResource("2_fq51f")
 region = Rect2(0, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fq51f"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_6fhym"]
 atlas = ExtResource("2_fq51f")
-region = Rect2(0, 96, 48, 48)
+region = Rect2(48, 96, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g3dum"]
 atlas = ExtResource("2_fq51f")
@@ -64,11 +64,11 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fq51f")
+"texture": SubResource("AtlasTexture_6fhym")
 }],
 "loop": 1,
 "name": &"cheese",
-"speed": 5.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -89,7 +89,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1vivr"]
-size = Vector2(46, 12)
+size = Vector2(46, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8vrlf"]
 size = Vector2(8, 28)
@@ -105,9 +105,10 @@ animation = &"bud"
 autoplay = "bud"
 
 [node name="platform" type="CollisionShape2D" parent="." unique_id=812410603]
-visible = false
+position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_1vivr")
 disabled = true
+one_way_collision = true
 
 [node name="cheeseable_box" type="Area2D" parent="." unique_id=2099193716 groups=["cheeseable_boxes"]]
 collision_layer = 2

@@ -16,7 +16,7 @@ compatibility/default_gravity=384.0
 [application]
 
 config/name="NRD-GBJAM14-Game"
-run/main_scene="uid://jpafxypv713j"
+run/main_scene="uid://rxo72aje485d"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 boot_splash/show_image=false
 config/icon="res://icon.svg"
@@ -29,6 +29,7 @@ buses/default_bus_layout="uid://c1timfrdhhf5f"
 
 GlobalHelper="*uid://doyrv0mlqxvxe"
 AudioController="*uid://bxivikgp2few2"
+ScreenTransitioner="*uid://bncqdve03dbr8"
 
 [display]
 
@@ -36,7 +37,7 @@ window/size/viewport_width=160
 window/size/viewport_height=144
 window/size/window_width_override=800
 window/size/window_height_override=720
-window/stretch/mode="canvas_items"
+window/stretch/mode="viewport"
 
 [global_group]
 

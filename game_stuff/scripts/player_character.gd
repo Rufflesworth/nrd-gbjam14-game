@@ -1,8 +1,7 @@
 extends CharacterBody2D
 
-### TODO: We likely need some flashing invincibility frames?
-
 ### TODO: Shoot Buffer?
+### TODO: Auto shoot on hold button?
 ### TODO: It'd be nice to have some extra time at the apex of a jump to get two max height shots off easier?
 
 ### TODO: At the beginning of a boss fight, the player goes to two health
@@ -16,7 +15,7 @@ signal health_changed
 
 const ACCELERATION = 384.0
 const MAX_SPEED = 48.0
-const FRICTION = 24.0
+const FRICTION = 8.0
 const JUMP_FORCE = -160.0
 const FALL_MULTIPLIER = 2.0
 const TERMINAL_VELOCITY = 128.0
@@ -25,10 +24,11 @@ const MAX_BULLETS = 3
 const INVINCIBLE_TIMER = 0.50
 const JUMP_BUFFER = 0.05 # if the player presses just before landing, let them have the jump
 const COYOTE_TIMER = 0.10
+const INVINCIBILITY_TIMER = 1.0
 
 @export var is_boss_room: bool = false
 
-enum STATES { RUNNING, AIRBORNE, DYING }
+enum STATES { RUNNING, AIRBORNE, DYING, DISABLED }
 var state: STATES
 
 var jump_sfx: AudioStreamWAV = preload("res://assets/audio/sfx/Jump.wav")
@@ -41,13 +41,13 @@ var facing: float = 1.0 # right = 1.0, left = -1.0
 var movement_direction: float = 0.0 # right = 1.0, left = -1.0
 var shoot_count: float = 0.0
 var active_cheese_rays: int = 0
-var invincible_count: float = 0.0
 var was_on_floor_last_frame: bool
 var jump_buffer_count: float = 0.0
 var coyote_count: float = 0.0
 var is_external_bounce: bool = false
-var external_velocity: Vector2
 var health: int = 1
+var is_invincible: bool = false
+var invincibility_count: float = 0.0
 
 func _ready() -> void:
 	float_pos = global_position
@@ -60,11 +60,13 @@ func _physics_process(delta: float) -> void:
 			process_movement(delta)
 			process_jump(delta)
 			process_cheese_ray(delta)
+			process_invincibility(delta)
 			process_animation()
 		STATES.AIRBORNE:
 			process_movement(delta)
 			process_jump(delta)
 			process_cheese_ray(delta)
+			process_invincibility(delta)
 			process_animation()
 		STATES.DYING:
 			process_movement(delta)
@@ -77,11 +79,13 @@ func process_movement(delta: float):
 	
 	if movement_direction != 0.0:
 		velocity.x += movement_direction * ACCELERATION * delta
-		if absf(velocity.x) > MAX_SPEED: velocity.x = movement_direction * MAX_SPEED
+		if is_external_bounce:
+			velocity.x = lerpf(velocity.x, 0.0, FRICTION * delta)
+		elif absf(velocity.x) > MAX_SPEED: velocity.x = movement_direction * MAX_SPEED
+	elif is_external_bounce: pass
 	else: # no input from the player
 		velocity.x = 0.0
 		#velocity.x = lerpf(velocity.x, 0.0, FRICTION * delta)
-		velocity += external_velocity
 	
 	if not is_on_floor():
 		if velocity.y < 0.0: # moving upward
@@ -144,9 +148,9 @@ func process_cheese_ray(delta: float):
 		var chz_ray = cheese_ray_resource.instantiate()
 		chz_ray.connect("freeing", _on_cheese_ray_freeing)
 		chz_ray.direction = facing
-		var offset: Vector2 = Vector2(0.0, 0.0)
-		if facing == 1.0: offset.x = 8.0
-		elif facing == -1.0: offset.x = -8.0
+		var offset: Vector2 = Vector2(0.0, 4.0)
+		if facing == 1.0: offset.x = 10.0
+		elif facing == -1.0: offset.x = -10.0
 		chz_ray.global_position = global_position + offset
 		var game = GlobalHelper.get_game()
 		game.add_child(chz_ray)
@@ -154,6 +158,18 @@ func process_cheese_ray(delta: float):
 		$shot_audio.play(0.0)
 		
 		shoot_count = SHOOT_TIMER
+
+func process_invincibility(delta):
+	if not is_invincible: return
+	
+	invincibility_count -= delta
+	if invincibility_count <= 0.0:
+		invincibility_count = 0.0
+		is_invincible = false
+		$AnimatedSprite2D.show()
+		return
+	if $AnimatedSprite2D.is_visible_in_tree(): $AnimatedSprite2D.hide()
+	else: $AnimatedSprite2D.show()
 
 func process_animation():
 	match state:
@@ -173,12 +189,16 @@ func process_animation():
 			else: $AnimatedSprite2D.play("fall")
 
 func jump():
+	if state == STATES.DYING: return
+	
 	velocity.y = JUMP_FORCE
 	$jump_audio.stream = jump_sfx
 	$jump_audio.play()
 	state = STATES.AIRBORNE
 
 func land():
+	if state == STATES.DYING: return
+	
 	$jump_audio.stream = land_sfx
 	$jump_audio.play()
 	state = STATES.RUNNING
@@ -189,12 +209,9 @@ func apply_external_force(vec: Vector2):
 	is_external_bounce = true
 	state = STATES.AIRBORNE
 
-func add_external_velocity(vel: Vector2):
-	external_velocity = vel
-
-func remove_external_velocity(): external_velocity = Vector2.ZERO
-
 func take_damage():
+	if is_invincible: return
+	
 	health -= 1
 	if health <= 0:
 		$hurt_box/CollisionShape2D.set_deferred("disabled", true)
@@ -203,8 +220,13 @@ func take_damage():
 		$take_damage_audio.play()
 		state = STATES.DYING
 	else:
-		pass
+		invincibility_count = INVINCIBILITY_TIMER
+		is_invincible = true
 	emit_signal("health_changed")
+
+## Used for disabling during a screen transition
+func freeze():
+	state = STATES.DISABLED
 
 func _on_collect_box_area_entered(area: Area2D) -> void:
 	if area.is_in_group("collectables"):

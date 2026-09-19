@@ -1,25 +1,28 @@
 extends Node
 
-#var title_screen_resource: PackedScene = preload("res://title_and_splash_screens/scenes/title_screen.tscn")
+## [ Black, Shade, Midtone, Highlight ]
+var PALETTE: Array = [Color.from_rgba8(62.0,58.0,66.0), Color.from_rgba8(135.0,114.0,134.0),
+	 Color.from_rgba8(240.0,182.0,149.0), Color.from_rgba8(233.0,245.0,218.0)]
 
 func _ready() -> void:
 	randomize()
 
+func get_main() -> Node2D:
+	var main: Node2D
+	var tree = get_parent()
+	main = tree.get_node("main")
+	return main
+
 func get_game() -> Node:
 	var game: Node
 	var tree = get_parent()
-	game = tree.get_node("game")
+	game = tree.get_node("main/current_scene/game")
 	return game
-
-#func go_to_title_screen():
-	#change_scene(title_screen_resource)
 
 func change_scene(scene: PackedScene):
 	if (scene != null): call_deferred("deferred_change_scene", scene)
 
 func deferred_change_scene(scene: PackedScene):
-	var newScene = scene.instantiate()
-	var tree = get_tree()
-	tree.current_scene.free()
-	tree.root.add_child(newScene)
-	tree.current_scene = newScene
+	var new_scene = scene.instantiate()
+	var main = get_main()
+	main.change_current_scene(new_scene)

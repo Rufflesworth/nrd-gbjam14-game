@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bncqdve03dbr8"]
+
+[ext_resource type="Script" uid="uid://bce7tjyr3aiq2" path="res://game_stuff/scripts/screen_transitioner.gd" id="1_hhpqe"]
+
+[node name="screen_transitioner" type="Node2D" unique_id=297054983]
+z_index = 99
+script = ExtResource("1_hhpqe")

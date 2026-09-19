@@ -10,7 +10,12 @@ func _ready() -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player_stuffs"):
-		prints("player has reached a room exit, now fade to black and load a new room")
+		body.freeze()
+		var scrn_trans = GlobalHelper.get_main().get_screen_transitioner()
+		scrn_trans.connect("transition_complete", _on_screen_transitioner_transition_completed)
+		scrn_trans.start_transition_exit()
 		emit_signal("exit_reached")
-		var game = GlobalHelper.get_game()
-		game.load_new_room(next_room)
+
+func _on_screen_transitioner_transition_completed():
+	var game = GlobalHelper.get_game()
+	game.load_new_room(next_room)

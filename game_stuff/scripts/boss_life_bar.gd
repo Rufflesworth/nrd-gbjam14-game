@@ -4,17 +4,17 @@ var boss: CharacterBody2D
 
 func _ready() -> void:
 	var game = GlobalHelper.get_game()
-	game.connect("boss_room_loaded", _on_boss_room_loaded)
-	
+	game.connect("retrying_current_room", _on_game_retrying_current_room)
 	hide()
 
-func _on_boss_room_loaded():
-	prints(self, "trying to handle boss room loaded")
-	var game = GlobalHelper.get_game()
-	var room = game.get_room()
-	boss = room.get_boss()
+func boss_entered(b: Node2D):
+	boss = b
 	boss.connect("health_changed", _on_boss_health_changed)
+	value = boss.health
 	show()
 
 func _on_boss_health_changed():
 	value = boss.health
+
+func _on_game_retrying_current_room():
+	hide()

@@ -5,19 +5,50 @@
 [ext_resource type="AudioStream" uid="uid://bb2tima2msjl3" path="res://assets/audio/sfx/Damage Boss.wav" id="3_ajp5e"]
 [ext_resource type="AudioStream" uid="uid://dq3hopyb6taiw" path="res://assets/audio/sfx/Evil Laugh.wav" id="4_uv1j4"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ajp5e"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_uv1j4"]
 atlas = ExtResource("2_a0a1g")
-region = Rect2(0, 32, 48, 48)
+region = Rect2(0, 0, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5278"]
+atlas = ExtResource("2_a0a1g")
+region = Rect2(168, 0, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h2rj5"]
+atlas = ExtResource("2_a0a1g")
+region = Rect2(0, 0, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_707q3"]
+atlas = ExtResource("2_a0a1g")
+region = Rect2(56, 0, 56, 56)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1vivr"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ajp5e")
+"texture": SubResource("AtlasTexture_uv1j4")
 }],
 "loop": 1,
 "name": &"default",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i5278")
+}],
+"loop": 1,
+"name": &"defeated",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h2rj5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_707q3")
+}],
+"loop": 1,
+"name": &"laugh",
+"speed": 12.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a0a1g"]
@@ -26,11 +57,73 @@ size = Vector2(24, 40)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b4ysa"]
 size = Vector2(32, 32)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1vivr"]
+size = Vector2(8, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eph11"]
+atlas = ExtResource("2_a0a1g")
+region = Rect2(0, 56, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ssyt3"]
+atlas = ExtResource("2_a0a1g")
+region = Rect2(56, 56, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_onqvv"]
+atlas = ExtResource("2_a0a1g")
+region = Rect2(112, 56, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w7rf4"]
+atlas = ExtResource("2_a0a1g")
+region = Rect2(0, 112, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dsqx3"]
+atlas = ExtResource("2_a0a1g")
+region = Rect2(56, 112, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2qenp"]
+atlas = ExtResource("2_a0a1g")
+region = Rect2(112, 112, 56, 56)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w7rf4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eph11")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ssyt3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_onqvv")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w7rf4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dsqx3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2qenp")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": 0,
+"name": &"fade",
+"speed": 6.0
+}]
+
 [node name="boss" type="CharacterBody2D" unique_id=1181347385]
 script = ExtResource("1_r1x7c")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1750429806]
 sprite_frames = SubResource("SpriteFrames_1vivr")
+autoplay = "default"
 
 [node name="hurt_box" type="Area2D" parent="." unique_id=869511121 groups=["hurt_boxes"]]
 visible = false
@@ -45,11 +138,32 @@ shape = SubResource("RectangleShape2D_a0a1g")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hit_box" unique_id=474710524]
 shape = SubResource("RectangleShape2D_b4ysa")
 
+[node name="pc_detection_box" type="Area2D" parent="." unique_id=114404322]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pc_detection_box" unique_id=1842057236]
+position = Vector2(0, 128)
+shape = SubResource("RectangleShape2D_1vivr")
+
+[node name="fake_cheese_of_power" type="AnimatedSprite2D" parent="." unique_id=984173654]
+position = Vector2(0, 120)
+sprite_frames = SubResource("SpriteFrames_w7rf4")
+autoplay = "default"
+
 [node name="take_damage_audio" type="AudioStreamPlayer" parent="." unique_id=2012637854]
 stream = ExtResource("3_ajp5e")
 
 [node name="laugh" type="AudioStreamPlayer" parent="." unique_id=217160438]
 stream = ExtResource("4_uv1j4")
 
+[node name="center_cannon" type="Node2D" parent="." unique_id=1023852372]
+position = Vector2(0, 24)
+
+[node name="left_cannon" type="Node2D" parent="." unique_id=1442059844]
+position = Vector2(-24, 8)
+
+[node name="right_cannon" type="Node2D" parent="." unique_id=1505556513]
+position = Vector2(24, 8)
+
 [connection signal="area_entered" from="hit_box" to="." method="_on_hit_box_area_entered"]
+[connection signal="body_entered" from="pc_detection_box" to="." method="_on_pc_detection_box_body_entered"]
 [connection signal="finished" from="laugh" to="." method="_on_laugh_finished"]

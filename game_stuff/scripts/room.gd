@@ -14,7 +14,7 @@ func get_camera(): return $camera
 func get_boss(): return $boss
 
 func add_enemy_hazard(obj: Node2D):
-	$level_objects.add_child(obj)
+	$level_objects.call_deferred("add_child", obj)
 
 func _on_room_exit_reached():
 	emit_signal("room_completed")

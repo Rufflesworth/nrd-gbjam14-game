@@ -46,7 +46,7 @@ tile_map_data = PackedByteArray("AAAcAAIAAAAAAAAAAQAQAAYAAAAAAAAABAARAAIAAAAAAAA
 tile_set = ExtResource("4_prlk3")
 
 [node name="player_character" parent="." unique_id=1719070970 instance=ExtResource("4_2kpsr")]
-position = Vector2(16, 88)
+position = Vector2(12, 96)
 
 [node name="camera" parent="." unique_id=2026864448 node_paths=PackedStringArray("target_to_follow") instance=ExtResource("5_qr25s")]
 limit_top = 0

@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://cv17g4oy5allv"]
+
+[ext_resource type="Script" uid="uid://dvg84cn4uu13a" path="res://game_stuff/scripts/boss_bullet.gd" id="1_yd43a"]
+[ext_resource type="Texture2D" uid="uid://bpx5oaq5o60g8" path="res://assets/sprites/boss_spritesheet.png" id="2_8mjgs"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8mjgs"]
+atlas = ExtResource("2_8mjgs")
+region = Rect2(168, 56, 56, 56)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1vivr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8mjgs")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8vrlf"]
+size = Vector2(12, 12)
+
+[node name="boss_bullet" type="CharacterBody2D" unique_id=944236526]
+script = ExtResource("1_yd43a")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1392581037]
+sprite_frames = SubResource("SpriteFrames_1vivr")
+
+[node name="hit_box" type="Area2D" parent="." unique_id=1060184320]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hit_box" unique_id=1487628278]
+shape = SubResource("RectangleShape2D_8vrlf")
+
+[connection signal="area_entered" from="hit_box" to="." method="_on_hit_box_area_entered"]

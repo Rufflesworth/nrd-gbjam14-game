@@ -42,7 +42,7 @@ size = Vector2(8, 8)
 size = Vector2(12, 12)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v5gy4"]
-size = Vector2(10, 10)
+size = Vector2(8, 8)
 
 [node name="spiky_fruit" type="CharacterBody2D" unique_id=1217375816]
 collision_layer = 9
@@ -51,7 +51,6 @@ script = ExtResource("1_fmjh1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2038892036]
 sprite_frames = SubResource("SpriteFrames_0uswa")
-animation = &"burst"
 autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=332835526]

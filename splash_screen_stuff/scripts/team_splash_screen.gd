@@ -2,7 +2,7 @@ extends Node2D
 
 @export var next_scene: PackedScene
 
-const TIMER = 5.0
+const TIMER = 6.0
 
 var timer_count = 0.0
 

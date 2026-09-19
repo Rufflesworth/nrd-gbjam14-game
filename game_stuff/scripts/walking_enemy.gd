@@ -18,6 +18,7 @@ func _physics_process(_delta: float) -> void:
 			if is_on_floor(): velocity.x = direction * SPEED
 			move_and_slide()
 		STATES.CHEESE:
+			velocity = Vector2(0.0, GRAVITY)
 			move_and_slide()
 
 func take_damage():
@@ -37,18 +38,25 @@ func turn_to_cheese():
 	AudioController.play_transform_into_cheese()
 	state = STATES.CHEESE
 
+## Used by the boss
+func revive():
+	if state == STATES.CHEESE:
+		$AnimatedSprite2D.play("default")
+		health = 3
+		state = STATES.NORMAL
+
 func _on_hit_box_area_entered(area: Area2D) -> void:
 	if area.is_in_group("player_stuffs") and area.is_in_group("hurt_boxes"):
 		var pc = area.get_parent()
 		var dir: float = 1.0
 		if global_position.x > pc.global_position.x: dir = -1.0
-		var shove: Vector2 = Vector2(dir * 512.0, -96.0)
+		var shove: Vector2 = Vector2(dir * 128.0, -96.0)
 		match state:
 			STATES.NORMAL:
 				pc.apply_external_force(shove)
 				pc.take_damage()
 			STATES.CHEESE:
-				pc.apply_external_force(Vector2(0.0, -216.0))
+				pc.apply_external_force(Vector2(0.0, -224.0))
 				$AnimatedSprite2D.play("bounce")
 				$AnimatedSprite2D.frame = 0
 				$boing_audio.play(0.0)

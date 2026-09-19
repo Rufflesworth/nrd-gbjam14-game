@@ -12,7 +12,7 @@ var web_color: Color
 func _ready() -> void:
 	velocity = Vector2(0.0, SPEED)
 	home = global_position.round()
-	web_color = GlobalHelper.get_game().PALETTE[0]
+	web_color = GlobalHelper.PALETTE[0]
 
 func _draw():
 	var start_pos = home - global_position.round() - Vector2(0.0, 152.0)
