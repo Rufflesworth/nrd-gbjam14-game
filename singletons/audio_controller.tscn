@@ -1,15 +1,19 @@
 [gd_scene format=3 uid="uid://bxivikgp2few2"]
 
 [ext_resource type="Script" uid="uid://cobbtr0k8dj78" path="res://singletons/audio_controller.gd" id="1_2rq82"]
+[ext_resource type="AudioStream" uid="uid://cg4i7pgcsdfdd" path="res://assets/audio/music/Planet Theme.wav" id="2_d6n2h"]
 [ext_resource type="AudioStream" uid="uid://c6pmxed75x0q8" path="res://assets/audio/sfx/Cheese Collected.wav" id="2_lbdjd"]
 
 [node name="audio_controller" type="Node" unique_id=822225685]
 script = ExtResource("1_2rq82")
 
 [node name="background_music" type="AudioStreamPlayer" parent="." unique_id=1531030725]
+stream = ExtResource("2_d6n2h")
 volume_db = -3.0
 
 [node name="cheese_audio" type="AudioStreamPlayer" parent="." unique_id=1182651973]
 
 [node name="cheese_collected" type="AudioStreamPlayer" parent="." unique_id=1965323686]
 stream = ExtResource("2_lbdjd")
+
+[connection signal="finished" from="background_music" to="." method="_on_background_music_finished"]

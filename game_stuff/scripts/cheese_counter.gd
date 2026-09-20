@@ -27,5 +27,6 @@ func _on_player_character_collected_cheese():
 	$amount.text = str(room_cheese + banked_cheese)
 
 func _on_game_room_completed():
+	prints(self, "handling room completed!")
 	banked_cheese += room_cheese
 	room_cheese = 0

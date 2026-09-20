@@ -21,6 +21,14 @@ region = Rect2(0, 0, 56, 56)
 atlas = ExtResource("2_a0a1g")
 region = Rect2(56, 0, 56, 56)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_cwkmc"]
+atlas = ExtResource("2_a0a1g")
+region = Rect2(112, 0, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fsuc8"]
+atlas = ExtResource("2_a0a1g")
+region = Rect2(0, 0, 56, 56)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_1vivr"]
 animations = [{
 "frames": [{
@@ -48,6 +56,26 @@ animations = [{
 }],
 "loop": 1,
 "name": &"laugh",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cwkmc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fsuc8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cwkmc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fsuc8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cwkmc")
+}],
+"loop": 0,
+"name": &"take_damage",
 "speed": 12.0
 }]
 
@@ -164,6 +192,7 @@ position = Vector2(-24, 8)
 [node name="right_cannon" type="Node2D" parent="." unique_id=1505556513]
 position = Vector2(24, 8)
 
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_entered" from="hit_box" to="." method="_on_hit_box_area_entered"]
 [connection signal="body_entered" from="pc_detection_box" to="." method="_on_pc_detection_box_body_entered"]
 [connection signal="finished" from="laugh" to="." method="_on_laugh_finished"]

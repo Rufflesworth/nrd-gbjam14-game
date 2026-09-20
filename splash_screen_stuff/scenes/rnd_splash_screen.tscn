@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dyld40m24ks68"]
 
 [ext_resource type="Script" uid="uid://dwqcwa4lxvx6h" path="res://splash_screen_stuff/scripts/team_splash_screen.gd" id="1_ax6x2"]
-[ext_resource type="PackedScene" uid="uid://jpafxypv713j" path="res://start_screen_stuff/scenes/start_screen.tscn" id="2_rxql7"]
+[ext_resource type="PackedScene" uid="uid://jpafxypv713j" path="res://start_screen_stuff/start_screen.tscn" id="2_rxql7"]
 [ext_resource type="Texture2D" uid="uid://dh7ihrk5gtql" path="res://splash_screen_stuff/sprites/all_fun_and_games_spritesheet.png" id="3_6dbnc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q0lgm"]
@@ -62,4 +62,4 @@ next_scene = ExtResource("2_rxql7")
 position = Vector2(80, 72)
 sprite_frames = SubResource("SpriteFrames_1vivr")
 autoplay = "default"
-frame_progress = 0.5104675
+frame_progress = 0.78360057

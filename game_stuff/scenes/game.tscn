@@ -3,21 +3,20 @@
 [ext_resource type="Script" uid="uid://dqpg3fp011o1o" path="res://game_stuff/scripts/game.gd" id="1_771w1"]
 [ext_resource type="PackedScene" uid="uid://0kfabk26bj5v" path="res://game_stuff/rooms/1_beginning.tscn" id="2_xrpyh"]
 [ext_resource type="PackedScene" uid="uid://6h2fjshyhuyx" path="res://game_stuff/scenes/cheese_counter.tscn" id="3_lteo3"]
-[ext_resource type="AudioStream" uid="uid://cg4i7pgcsdfdd" path="res://assets/audio/music/Planet Theme.wav" id="3_xrpyh"]
 [ext_resource type="PackedScene" uid="uid://t26psbjy3g35" path="res://game_stuff/scenes/boss_life_bar.tscn" id="5_l2ul3"]
 [ext_resource type="PackedScene" uid="uid://cmlx5j0vge08n" path="res://game_stuff/scenes/player_character_life.tscn" id="6_xrpyh"]
 
 [node name="game" type="Node2D" unique_id=2025475812]
 script = ExtResource("1_771w1")
 first_room = ExtResource("2_xrpyh")
-stage_music = ExtResource("3_xrpyh")
 
 [node name="room" type="Node2D" parent="." unique_id=14516140]
 
 [node name="user_interface" type="CanvasLayer" parent="." unique_id=1338849887]
 
 [node name="cheese_counter" parent="user_interface" unique_id=571966882 instance=ExtResource("3_lteo3")]
-offset_top = 128.0
+offset_top = 131.0
+offset_bottom = 3.0
 
 [node name="boss_life_bar" parent="user_interface" unique_id=876981977 instance=ExtResource("5_l2ul3")]
 offset_left = 80.0
@@ -29,5 +28,6 @@ value = 80.0
 
 [node name="player_character_life" parent="user_interface" unique_id=1782183298 instance=ExtResource("6_xrpyh")]
 offset_left = 24.0
-offset_top = 128.0
+offset_top = 130.0
 offset_right = -120.0
+offset_bottom = 2.0

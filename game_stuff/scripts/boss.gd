@@ -14,7 +14,6 @@ enum PHASES { HIDING, ENTRANCE, LAUGHING, BATTLE, HALF_HP, DEFEATED }
 var phase: PHASES = PHASES.HIDING
 
 var walking_enemy_resource: PackedScene = preload("res://game_stuff/enemies_hazards/walking_enemy.tscn")
-var boss_music: AudioStreamWAV = preload("res://assets/audio/music/Boss Theme.wav")
 var bullet_resource: PackedScene = preload("res://game_stuff/scenes/boss_bullet.tscn")
 
 var health: int
@@ -91,6 +90,8 @@ func take_damage():
 		if leftside_lackey != null: leftside_lackey.revive()
 		if current_bullet: current_bullet.queue_free()
 		shove_pc_away()
+	else:
+		$AnimatedSprite2D.play("take_damage")
 	$take_damage_audio.play()
 	
 	emit_signal("health_changed")
@@ -109,7 +110,7 @@ func _on_hit_box_area_entered(area: Area2D) -> void:
 
 func _on_laugh_finished() -> void:
 	if phase == PHASES.LAUGHING:
-		AudioController.set_music_track(boss_music)
+		AudioController.set_music_to_boss_theme()
 		phase = PHASES.BATTLE
 	$AnimatedSprite2D.play("default")
 
@@ -132,3 +133,8 @@ func _on_pc_detection_box_body_entered(body: Node2D) -> void:
 		$fake_cheese_of_power.play("fade")
 		
 		phase = PHASES.ENTRANCE
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	match $AnimatedSprite2D.animation:
+		"take_damage":
+			$AnimatedSprite2D.play("default")

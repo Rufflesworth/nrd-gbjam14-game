@@ -5,7 +5,6 @@ signal room_completed
 signal new_room_loaded
 
 @export var first_room: PackedScene
-@export var stage_music: AudioStreamWAV
 
 var current_room: Node2D
 var current_room_resource: PackedScene
@@ -28,7 +27,7 @@ func get_boss_life_bar(): return $user_interface/boss_life_bar
 func get_pc_life_bar(): return $user_interface/player_character_life
 
 func load_stage():
-	AudioController.set_music_track(stage_music)
+	AudioController.set_music_to_planet_theme()
 
 func retry_current_room():
 	call_deferred("deferred_retry_current_room")
@@ -40,6 +39,7 @@ func deferred_retry_current_room():
 		if current_room: current_room.free()
 		$room.add_child(new_room)
 		current_room = new_room
+		current_room.connect("room_completed", _on_current_room_room_completed)
 		call_deferred("emit_signal", "new_room_loaded")
 
 func load_new_room(room: PackedScene):

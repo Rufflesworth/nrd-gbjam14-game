@@ -204,6 +204,8 @@ func land():
 	state = STATES.RUNNING
 
 func apply_external_force(vec: Vector2):
+	if state == STATES.DYING: return
+	
 	prints("something is trying to push away the pc:", vec)
 	velocity = vec
 	is_external_bounce = true
