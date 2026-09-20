@@ -98,6 +98,10 @@ animations = [{
 atlas = ExtResource("2_a0a1g")
 region = Rect2(168, 0, 56, 56)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ghurq"]
+atlas = ExtResource("2_a0a1g")
+region = Rect2(280, 0, 56, 56)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_ojrkx"]
 atlas = ExtResource("2_a0a1g")
 region = Rect2(168, 0, 56, 56)
@@ -118,6 +122,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_ghurq")
+}],
+"loop": 1,
+"name": &"headless",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_ojrkx")
 }, {
 "duration": 1.0,
@@ -125,6 +137,28 @@ animations = [{
 }],
 "loop": 1,
 "name": &"laugh",
+"speed": 12.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k2uth"]
+atlas = ExtResource("2_a0a1g")
+region = Rect2(224, 112, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d13hx"]
+atlas = ExtResource("2_a0a1g")
+region = Rect2(280, 112, 56, 56)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v5gy4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k2uth")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d13hx")
+}],
+"loop": 1,
+"name": &"default",
 "speed": 12.0
 }]
 
@@ -200,12 +234,19 @@ script = ExtResource("1_r1x7c")
 
 [node name="ship" type="AnimatedSprite2D" parent="." unique_id=1750429806]
 sprite_frames = SubResource("SpriteFrames_1vivr")
-animation = &"half_health"
+animation = &"full_health"
 autoplay = "full_health"
 
-[node name="boss_head" type="AnimatedSprite2D" parent="." unique_id=1235545768]
+[node name="boss_body" type="AnimatedSprite2D" parent="." unique_id=1235545768]
 sprite_frames = SubResource("SpriteFrames_8vrlf")
-animation = &"laugh"
+autoplay = "default"
+
+[node name="robot_head" type="AnimatedSprite2D" parent="." unique_id=1412589203]
+visible = false
+position = Vector2(0, -4)
+sprite_frames = SubResource("SpriteFrames_v5gy4")
+autoplay = "default"
+frame_progress = 0.9367603
 
 [node name="fake_cheese_of_power" type="AnimatedSprite2D" parent="." unique_id=984173654]
 position = Vector2(0, 120)

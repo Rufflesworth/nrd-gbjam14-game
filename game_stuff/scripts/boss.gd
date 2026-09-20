@@ -10,7 +10,7 @@ const SHOOT_TIMER = 3.0
 
 @export var player_character: CharacterBody2D
 
-enum PHASES { HIDING, ENTRANCE, LAUGHING, BATTLE, HALF_HP, DEFEATED }
+enum PHASES { HIDING, ENTRANCE, LAUGHING, BATTLE, HALF_HP, DEFEATED, HEADLESS, LAST_LAUGH, ESCAPE, GONE }
 var phase: PHASES = PHASES.HIDING
 
 var walking_enemy_resource: PackedScene = preload("res://game_stuff/enemies_hazards/walking_enemy.tscn")
@@ -22,11 +22,14 @@ var shoot_count: float
 var current_bullet
 var rightside_lackey: Node2D
 var leftside_lackey: Node2D
+var robot_head_velocity: Vector2 = Vector2.ZERO
+var robot_head_target: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
 	if player_character == null: printerr(self, "doesn't have the player character reference assigned!")
 	health = MAX_HEALTH
 	AudioController.stop_music_track()
+	$robot_head.hide()
 
 func _physics_process(delta: float) -> void:
 	match phase:
@@ -36,7 +39,7 @@ func _physics_process(delta: float) -> void:
 			if global_position.y >= ENTRANCE_TARGET:
 				global_position.y = ENTRANCE_TARGET
 				$laugh.play()
-				$boss_head.play("laugh")
+				$boss_body.play("laugh")
 				GlobalHelper.get_game().get_boss_life_bar().boss_entered(self)
 				GlobalHelper.get_game().get_pc_life_bar().boss_entered()
 				GlobalHelper.get_game().get_cheese_counter().hide()
@@ -56,6 +59,28 @@ func _physics_process(delta: float) -> void:
 		PHASES.HALF_HP:
 			shoot_count += delta
 			if shoot_count >= SHOOT_TIMER: shoot()
+		PHASES.DEFEATED:
+			global_position += Vector2(0.0, 32.0) * delta
+			if global_position.y >= 112.0:
+				$boss_body.play("headless")
+				$robot_head.show()
+				robot_head_target = Vector2(0.0, 24.0)
+				phase = PHASES.HEADLESS
+		PHASES.HEADLESS:
+			robot_head_velocity.y += -24.0 * delta
+			$robot_head.global_position += robot_head_velocity * delta
+			if $robot_head.global_position.y <= robot_head_target.y:
+				AudioController.stop_music_track()
+				robot_head_velocity = Vector2.ZERO
+				$laugh.play(0.0)
+				phase = PHASES.LAST_LAUGH
+		PHASES.ESCAPE:
+			$robot_head.global_position += robot_head_velocity * delta
+			if $robot_head.global_position.y < -80.0:
+				var scrn_trans = GlobalHelper.get_main().get_screen_transitioner()
+				scrn_trans.connect("transition_complete", _on_screen_transitioner_transition_completed)
+				scrn_trans.start_transition_exit()
+				phase = PHASES.GONE
 
 func shoot():
 	if current_bullet == null:
@@ -78,10 +103,10 @@ func shoot():
 		shoot_count = randf()
 
 func take_damage():
-	health -= 10
+	health -= 1
 	if health <= 0: handle_boss_defeated()
 	elif health % (MAX_HEALTH / 4) == 0: # every quarter hp lost
-		$boss_head.play("laugh")
+		$boss_body.play("laugh")
 		$laugh.play()
 		if rightside_lackey != null: rightside_lackey.revive()
 		if leftside_lackey != null: leftside_lackey.revive()
@@ -106,12 +131,6 @@ func handle_boss_defeated():
 	$hurt_box/CollisionShape2D.set_deferred("disabled", true)
 	$hit_box/CollisionShape2D.set_deferred("disabled", true)
 	$ship.play("defeated")
-	
-	### TODO: We ideally want to do this after having the boss break out of the cheese and escape!
-	var scrn_trans = GlobalHelper.get_main().get_screen_transitioner()
-	scrn_trans.connect("transition_complete", _on_screen_transitioner_transition_completed)
-	scrn_trans.start_transition_exit()
-	
 	phase = PHASES.DEFEATED
 
 func _on_hit_box_area_entered(area: Area2D) -> void:
@@ -121,10 +140,15 @@ func _on_hit_box_area_entered(area: Area2D) -> void:
 		pc.take_damage()
 
 func _on_laugh_finished() -> void:
-	if phase == PHASES.LAUGHING:
-		AudioController.set_music_to_boss_theme()
-		phase = PHASES.BATTLE
-	$boss_head.play("default")
+	match phase:
+		PHASES.LAUGHING:
+			AudioController.set_music_to_boss_theme()
+			phase = PHASES.BATTLE
+		PHASES.BATTLE, PHASES.HALF_HP:
+			$boss_body.play("default")
+		PHASES.LAST_LAUGH:
+			robot_head_velocity = Vector2(0.0, -128.0)
+			phase = PHASES.ESCAPE
 
 func _on_pc_detection_box_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player_stuffs"):
