@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cy2d7yei6up38" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://bncqdve03dbr8" path="res://game_stuff/scenes/screen_transitioner.tscn" id="1_ig7tw"]
-[ext_resource type="PackedScene" uid="uid://bs5134u2qgkxo" path="res://splash_screen_stuff/scenes/gbjam_splash_screen.tscn" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://bnb2moo71mwqq" path="res://game_stuff/scenes/game.tscn" id="2_h2yge"]
 
 [node name="main" type="Node2D" unique_id=975181618]
 script = ExtResource("1_0xm2m")

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://qjicv3rgpno7"
+path="res://.godot/imported/Planet Theme LOOP.wav-662e7be0ebb67dbeac9c2998c3a5aad4.sample"
+
+[deps]
+
+source_file="res://assets/audio/music/Planet Theme LOOP.wav"
+dest_files=["res://.godot/imported/Planet Theme LOOP.wav-662e7be0ebb67dbeac9c2998c3a5aad4.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

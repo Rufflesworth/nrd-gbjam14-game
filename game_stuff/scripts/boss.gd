@@ -15,6 +15,7 @@ var phase: PHASES = PHASES.HIDING
 
 var walking_enemy_resource: PackedScene = preload("res://game_stuff/enemies_hazards/walking_enemy.tscn")
 var bullet_resource: PackedScene = preload("res://game_stuff/scenes/boss_bullet.tscn")
+var next_scene_resource: PackedScene = preload("res://credits_stuff/thanks_for_playing.tscn")
 
 var health: int
 var shoot_count: float
@@ -35,9 +36,10 @@ func _physics_process(delta: float) -> void:
 			if global_position.y >= ENTRANCE_TARGET:
 				global_position.y = ENTRANCE_TARGET
 				$laugh.play()
-				$AnimatedSprite2D.play("laugh")
+				$boss_head.play("laugh")
 				GlobalHelper.get_game().get_boss_life_bar().boss_entered(self)
 				GlobalHelper.get_game().get_pc_life_bar().boss_entered()
+				GlobalHelper.get_game().get_cheese_counter().hide()
 				phase = PHASES.LAUGHING
 		PHASES.LAUGHING:
 			pass
@@ -76,22 +78,19 @@ func shoot():
 		shoot_count = randf()
 
 func take_damage():
-	health -= 1
-	if health <= 0:
-		prints("BOSS DEFEATED!!! GG!!!")
-		$hurt_box/CollisionShape2D.set_deferred("disabled", true)
-		$hit_box/CollisionShape2D.set_deferred("disabled", true)
-		$AnimatedSprite2D.play("defeated")
-		phase = PHASES.DEFEATED
+	health -= 10
+	if health <= 0: handle_boss_defeated()
 	elif health % (MAX_HEALTH / 4) == 0: # every quarter hp lost
-		$AnimatedSprite2D.play("laugh")
+		$boss_head.play("laugh")
 		$laugh.play()
 		if rightside_lackey != null: rightside_lackey.revive()
 		if leftside_lackey != null: leftside_lackey.revive()
 		if current_bullet: current_bullet.queue_free()
 		shove_pc_away()
 	else:
-		$AnimatedSprite2D.play("take_damage")
+		match phase:
+			PHASES.BATTLE: $ship.play("full_health_damaged")
+			PHASES.HALF_HP: $ship.play("half_health_damaged")
 	$take_damage_audio.play()
 	
 	emit_signal("health_changed")
@@ -101,6 +100,19 @@ func shove_pc_away():
 	if global_position.x > player_character.global_position.x: dir = -1.0
 	var shove: Vector2 = Vector2(dir * 512.0, -96.0)
 	player_character.apply_external_force(shove)
+
+func handle_boss_defeated():
+	prints("BOSS DEFEATED!!! GG!!!")
+	$hurt_box/CollisionShape2D.set_deferred("disabled", true)
+	$hit_box/CollisionShape2D.set_deferred("disabled", true)
+	$ship.play("defeated")
+	
+	### TODO: We ideally want to do this after having the boss break out of the cheese and escape!
+	var scrn_trans = GlobalHelper.get_main().get_screen_transitioner()
+	scrn_trans.connect("transition_complete", _on_screen_transitioner_transition_completed)
+	scrn_trans.start_transition_exit()
+	
+	phase = PHASES.DEFEATED
 
 func _on_hit_box_area_entered(area: Area2D) -> void:
 	if area.is_in_group("player_stuffs") and area.is_in_group("hurt_boxes"):
@@ -112,7 +124,7 @@ func _on_laugh_finished() -> void:
 	if phase == PHASES.LAUGHING:
 		AudioController.set_music_to_boss_theme()
 		phase = PHASES.BATTLE
-	$AnimatedSprite2D.play("default")
+	$boss_head.play("default")
 
 func _on_pc_detection_box_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player_stuffs"):
@@ -134,7 +146,10 @@ func _on_pc_detection_box_body_entered(body: Node2D) -> void:
 		
 		phase = PHASES.ENTRANCE
 
-func _on_animated_sprite_2d_animation_finished() -> void:
-	match $AnimatedSprite2D.animation:
-		"take_damage":
-			$AnimatedSprite2D.play("default")
+func _on_ship_animation_finished() -> void:
+	match $ship.animation:
+		"full_health_damaged": $ship.play("full_health")
+		"half_health_damaged": $ship.play("half_health")
+
+func _on_screen_transitioner_transition_completed():
+	GlobalHelper.change_scene(next_scene_resource)

@@ -5,17 +5,31 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8mjgs"]
 atlas = ExtResource("2_8mjgs")
-region = Rect2(168, 56, 56, 56)
+region = Rect2(168, 168, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5b5gc"]
+atlas = ExtResource("2_8mjgs")
+region = Rect2(224, 168, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ayd0d"]
+atlas = ExtResource("2_8mjgs")
+region = Rect2(280, 168, 56, 56)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1vivr"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8mjgs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5b5gc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ayd0d")
 }],
 "loop": 1,
 "name": &"default",
-"speed": 5.0
+"speed": 12.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8vrlf"]
@@ -26,8 +40,11 @@ script = ExtResource("1_yd43a")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1392581037]
 sprite_frames = SubResource("SpriteFrames_1vivr")
+autoplay = "default"
+frame_progress = 0.55000186
 
 [node name="hit_box" type="Area2D" parent="." unique_id=1060184320]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hit_box" unique_id=1487628278]
 shape = SubResource("RectangleShape2D_8vrlf")

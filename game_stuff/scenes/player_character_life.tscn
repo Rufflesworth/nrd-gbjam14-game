@@ -1,25 +1,63 @@
 [gd_scene format=3 uid="uid://cmlx5j0vge08n"]
 
 [ext_resource type="Script" uid="uid://pvhkxmihca6n" path="res://game_stuff/scripts/player_character_life.gd" id="1_hbjv3"]
-[ext_resource type="FontFile" uid="uid://cevikea01067y" path="res://fonts/4by5PixelFont.png" id="1_hfu8b"]
+[ext_resource type="Texture2D" uid="uid://4rf2w1h2vu1g" path="res://assets/sprites/player_boss_fight_health.png" id="2_hbjv3"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_1vivr"]
-font = ExtResource("1_hfu8b")
+[sub_resource type="AtlasTexture" id="AtlasTexture_jnrgv"]
+atlas = ExtResource("2_hbjv3")
+region = Rect2(0, 48, 40, 16)
 
-[node name="player_character_life" type="Control" unique_id=1782183298]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[sub_resource type="AtlasTexture" id="AtlasTexture_xl8o0"]
+atlas = ExtResource("2_hbjv3")
+region = Rect2(0, 32, 40, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bdjk5"]
+atlas = ExtResource("2_hbjv3")
+region = Rect2(0, 0, 40, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1yl0n"]
+atlas = ExtResource("2_hbjv3")
+region = Rect2(0, 16, 40, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1vivr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jnrgv")
+}],
+"loop": 1,
+"name": &"no_health",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xl8o0")
+}],
+"loop": 1,
+"name": &"one_health",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bdjk5")
+}],
+"loop": 1,
+"name": &"three_health",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1yl0n")
+}],
+"loop": 1,
+"name": &"two_health",
+"speed": 5.0
+}]
+
+[node name="player_character_life" type="Node2D" unique_id=960275613]
 script = ExtResource("1_hbjv3")
 
-[node name="hp" type="Label" parent="." unique_id=81652750]
-layout_mode = 0
-offset_right = 16.0
-offset_bottom = 16.0
-text = "2"
-label_settings = SubResource("LabelSettings_1vivr")
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1895390536]
+sprite_frames = SubResource("SpriteFrames_1vivr")
+animation = &"three_health"
+autoplay = "three_health"

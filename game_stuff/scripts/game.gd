@@ -26,6 +26,8 @@ func get_boss_life_bar(): return $user_interface/boss_life_bar
 
 func get_pc_life_bar(): return $user_interface/player_character_life
 
+func get_cheese_counter(): return $user_interface/cheese_counter
+
 func load_stage():
 	AudioController.set_music_to_planet_theme()
 

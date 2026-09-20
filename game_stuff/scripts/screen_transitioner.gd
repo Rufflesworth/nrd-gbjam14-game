@@ -37,8 +37,8 @@ func _process(delta: float) -> void:
 				if not is_transitioning_entrance:
 					num_tiles_to_draw += 1
 					if num_tiles_to_draw > (SCREEN_IN_TILES.x * SCREEN_IN_TILES.y):
-						emit_signal("transition_complete")
 						state = STATES.WAITING
+						emit_signal("transition_complete")
 					else:
 						queue_redraw()
 						add_tile_count = 0.0
@@ -48,16 +48,18 @@ func _process(delta: float) -> void:
 						num_tiles_to_draw = 0
 						num_tiles_to_skip = -1
 						add_tile_count = 0.0
-						emit_signal("transition_complete")
 						state = STATES.WAITING
+						emit_signal("transition_complete")
 					else:
 						queue_redraw()
 						add_tile_count = 0.0
 
 func start_transition_exit():
+	#prints("start trans exit")
 	is_transitioning_entrance = false
 	state = STATES.TRANSITIONING
 
 func start_transition_entrance():
+	#prints("start trans entrance")
 	is_transitioning_entrance = true
 	state = STATES.TRANSITIONING

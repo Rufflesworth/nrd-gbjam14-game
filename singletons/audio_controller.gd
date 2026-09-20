@@ -1,19 +1,24 @@
 extends Node
 
+signal background_music_finished
+
 const TITLE_THEME_LOOP = 1.20
 const PLANET_THEME_LOOP = 8.60
 const CREDITS_THEME_LOOP = 22.40
 const VOLUME_STEP = 0.1
 
 var title_music: AudioStreamWAV = preload("res://assets/audio/music/Title Theme.wav")
+var title_music_looped: AudioStreamWAV = preload("res://assets/audio/music/Title Theme LOOP.wav")
 var planet_music: AudioStreamWAV = preload("res://assets/audio/music/Planet Theme.wav")
+var planet_music_looped: AudioStreamWAV = preload("res://assets/audio/music/Planet Theme LOOP.wav")
 var boss_music: AudioStreamWAV = preload("res://assets/audio/music/Boss Theme.wav")
 var credits_music: AudioStreamWAV = preload("res://assets/audio/music/Credits Theme.wav")
+var credits_music_looped: AudioStreamWAV = preload("res://assets/audio/music/Credits Theme LOOP.wav")
 var transform_into_cheese_sfx: AudioStreamWAV = preload("res://assets/audio/sfx/Cheese.wav")
 var burst_into_cheese_sfx: AudioStreamWAV = preload("res://assets/audio/sfx/Cheese Bits.wav")
 
 var boot_volume = 0.5
-var music_loop_time: float = 0.0
+var do_loop_music: bool = true
 
 func _ready() -> void:
 	var masterIdx = AudioServer.get_bus_index("Master")
@@ -25,28 +30,25 @@ func _process(_delta: float) -> void:
 	elif (Input.is_action_just_pressed("audio_decrease_volume")):
 		decrease_volume()
 
-func set_music_track(music: AudioStreamWAV):
+func set_music_track(music: AudioStreamWAV, do_loop: bool = true):
 	$background_music.stream = music
 	$background_music.play(0.0)
-	music_loop_time = 0.0
+	do_loop_music = do_loop
 
 func stop_music_track(): $background_music.stop()
 
 func set_music_to_title_theme():
 	set_music_track(title_music)
-	music_loop_time = TITLE_THEME_LOOP
 
 func set_music_to_planet_theme():
 	set_music_track(planet_music)
-	music_loop_time = PLANET_THEME_LOOP
 
 func set_music_to_boss_theme():
 	set_music_track(boss_music)
-	music_loop_time = 0.0
 
-func set_music_to_credits_theme():
-	set_music_track(credits_music)
-	music_loop_time = CREDITS_THEME_LOOP
+func set_music_to_credits_theme(do_loop: bool = true):
+	set_music_track(credits_music, do_loop)
+	#music_loop_time = CREDITS_THEME_LOOP
 
 func increase_volume():
 	var masterIdx = AudioServer.get_bus_index("Master")
@@ -72,5 +74,11 @@ func play_cheese_collected():
 	$cheese_collected.play(0.0)
 
 func _on_background_music_finished() -> void:
-	prints("background music finished playing! Looping manually!")
-	$background_music.play(music_loop_time)
+	if do_loop_music:
+		match $background_music.stream:
+			title_music: $background_music.stream = title_music_looped
+			planet_music: $background_music.stream = planet_music_looped
+			credits_music: $background_music.stream = credits_music_looped
+		$background_music.play()
+	
+	emit_signal("background_music_finished")

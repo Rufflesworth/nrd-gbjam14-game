@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b8a1of527rmiu"
+path="res://.godot/imported/Credits Theme LOOP.wav-4c0ec80cc1aa6f60260f9561278aa944.sample"
+
+[deps]
+
+source_file="res://assets/audio/music/Credits Theme LOOP.wav"
+dest_files=["res://.godot/imported/Credits Theme LOOP.wav-4c0ec80cc1aa6f60260f9561278aa944.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

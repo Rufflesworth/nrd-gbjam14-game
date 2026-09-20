@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://mf0cbp2e8t4n"]
+
+[ext_resource type="Script" uid="uid://dw3t5y3icwie4" path="res://credits_stuff/thanks_for_playing.gd" id="1_8cie2"]
+[ext_resource type="FontFile" uid="uid://cevikea01067y" path="res://fonts/4by5PixelFont.png" id="2_rapql"]
+[ext_resource type="AudioStream" uid="uid://jjgf8kcm2r1m" path="res://assets/audio/sfx/mysterious.wav" id="3_rapql"]
+[ext_resource type="AudioStream" uid="uid://dq3hopyb6taiw" path="res://assets/audio/sfx/Evil Laugh.wav" id="4_030e4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1vivr"]
+font = ExtResource("2_rapql")
+font_color = Color(0.9137255, 0.9607843, 0.85490197, 1)
+
+[node name="thanks_for_playing" type="Node2D" unique_id=979864217]
+script = ExtResource("1_8cie2")
+
+[node name="background" type="ColorRect" parent="." unique_id=541226788]
+offset_right = 160.0
+offset_bottom = 144.0
+color = Color(0.24313726, 0.22745098, 0.25882354, 1)
+
+[node name="Label" type="Label" parent="." unique_id=1248888699]
+offset_right = 160.0
+offset_bottom = 144.0
+text = "THANKS
+FOR
+PLAYING!"
+label_settings = SubResource("LabelSettings_1vivr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="mysterious" type="AudioStreamPlayer" parent="." unique_id=1570492590]
+stream = ExtResource("3_rapql")
+
+[node name="laugh" type="AudioStreamPlayer" parent="." unique_id=1486397468]
+stream = ExtResource("4_030e4")
+
+[connection signal="finished" from="mysterious" to="." method="_on_mysterious_finished"]
+[connection signal="finished" from="laugh" to="." method="_on_laugh_finished"]
